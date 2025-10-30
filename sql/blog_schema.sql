@@ -3,8 +3,8 @@
 -- ========================================
 
 -- Create database (if needed)
-CREATE DATABASE IF NOT EXISTS pyramedia_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE pyramedia_db;
+CREATE DATABASE IF NOT EXISTS pyramed1_final CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE pyramed1_final;
 
 -- ========================================
 -- Categories Table
