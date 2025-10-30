@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PYRAMEDIA - Leading marketing & media agency in the GCC region. We empower youth through the power of media and innovation.">
-    <meta name="keywords" content="marketing, media, digital marketing, automation, GCC, Dubai, brand strategy">
-    <title>PYRAMEDIA - Marketing & Media Solutions</title>
+    <meta name="description" content="بيراميديا - وكالة رائدة للتسويق والإعلام في منطقة الخليج. نمكّن الشباب من خلال قوة الإعلام والابتكار.">
+    <meta name="keywords" content="تسويق, إعلام, تسويق رقمي, أتمتة, الخليج, دبي, استراتيجية العلامة التجارية">
+    <title>بيراميديا - حلول التسويق والإعلام</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,18 +13,19 @@
     <!-- Font Awesome 6.4.0 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Google Fonts - Poppins -->
+    <!-- Google Fonts - Cairo & Tajawal for Arabic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
     <style>
         * {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Cairo', 'Tajawal', sans-serif;
         }
 
         body {
             transition: background-color 0.3s ease, color 0.3s ease;
+            direction: rtl;
         }
 
         .gradient-bg {
@@ -67,7 +68,7 @@
             content: '';
             position: absolute;
             bottom: -5px;
-            left: 0;
+            right: 0;
             width: 0;
             height: 2px;
             background: #FF6B35;
@@ -221,12 +222,21 @@
         .scroll-progress {
             position: fixed;
             top: 0;
-            left: 0;
+            right: 0;
             width: 0%;
             height: 3px;
             background: linear-gradient(90deg, #FF6B35 0%, #FF8C42 100%);
             z-index: 10000;
             transition: width 0.1s ease;
+        }
+
+        /* RTL specific adjustments */
+        .text-left {
+            text-align: right !important;
+        }
+
+        .text-right {
+            text-align: left !important;
         }
     </style>
 </head>
@@ -239,31 +249,31 @@
         <div class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
-                <div class="flex items-center space-x-3">
+                <div class="flex items-center space-x-3 space-x-reverse">
                     <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
                         <i class="fas fa-pyramid text-white text-xl"></i>
                     </div>
                     <div>
-                        <h1 class="text-2xl font-bold gradient-text">PYRAMEDIA</h1>
-                        <p class="text-xs text-gray-600">Marketing & Media Solutions</p>
+                        <h1 class="text-2xl font-bold gradient-text">بيراميديا</h1>
+                        <p class="text-xs text-gray-600">حلول التسويق والإعلام</p>
                     </div>
                 </div>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden lg:flex items-center space-x-8">
-                    <a href="#home" class="nav-link text-gray-800 hover:text-orange-500">Home</a>
-                    <a href="#about" class="nav-link text-gray-800 hover:text-orange-500">About</a>
-                    <a href="#services" class="nav-link text-gray-800 hover:text-orange-500">Services</a>
-                    <a href="#case-studies" class="nav-link text-gray-800 hover:text-orange-500">Case Studies</a>
-                    <a href="#blog" class="nav-link text-gray-800 hover:text-orange-500">Blog</a>
-                    <a href="#contact" class="nav-link text-gray-800 hover:text-orange-500">Contact</a>
+                <div class="hidden lg:flex items-center space-x-8 space-x-reverse">
+                    <a href="#home" class="nav-link text-gray-800 hover:text-orange-500">الرئيسية</a>
+                    <a href="#about" class="nav-link text-gray-800 hover:text-orange-500">من نحن</a>
+                    <a href="#services" class="nav-link text-gray-800 hover:text-orange-500">الخدمات</a>
+                    <a href="#case-studies" class="nav-link text-gray-800 hover:text-orange-500">دراسات الحالة</a>
+                    <a href="#blog" class="nav-link text-gray-800 hover:text-orange-500">المدونة</a>
+                    <a href="#contact" class="nav-link text-gray-800 hover:text-orange-500">التواصل</a>
                 </div>
 
                 <!-- Right Side Actions -->
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-4 space-x-reverse">
                     <!-- Language Switcher -->
-                    <a href="index-ar.html" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                        <span class="text-sm font-semibold text-gray-800">AR</span>
+                    <a href="index.html" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <span class="text-sm font-semibold text-gray-800">EN</span>
                     </a>
 
                     <!-- Theme Toggle -->
@@ -273,7 +283,7 @@
 
                     <!-- Book Consultation Button -->
                     <button onclick="openBookingModal()" class="hidden lg:block gradient-bg text-white px-6 py-3 rounded-lg font-semibold btn-primary">
-                        Book Free Consultation
+                        احجز استشارة مجانية
                     </button>
 
                     <!-- Mobile Menu Toggle -->
@@ -286,14 +296,14 @@
             <!-- Mobile Menu -->
             <div id="mobileMenu" class="mobile-menu lg:hidden">
                 <div class="flex flex-col space-y-4 mt-6">
-                    <a href="#home" class="text-gray-800 hover:text-orange-500 py-2">Home</a>
-                    <a href="#about" class="text-gray-800 hover:text-orange-500 py-2">About</a>
-                    <a href="#services" class="text-gray-800 hover:text-orange-500 py-2">Services</a>
-                    <a href="#case-studies" class="text-gray-800 hover:text-orange-500 py-2">Case Studies</a>
-                    <a href="#blog" class="text-gray-800 hover:text-orange-500 py-2">Blog</a>
-                    <a href="#contact" class="text-gray-800 hover:text-orange-500 py-2">Contact</a>
+                    <a href="#home" class="text-gray-800 hover:text-orange-500 py-2">الرئيسية</a>
+                    <a href="#about" class="text-gray-800 hover:text-orange-500 py-2">من نحن</a>
+                    <a href="#services" class="text-gray-800 hover:text-orange-500 py-2">الخدمات</a>
+                    <a href="#case-studies" class="text-gray-800 hover:text-orange-500 py-2">دراسات الحالة</a>
+                    <a href="#blog" class="text-gray-800 hover:text-orange-500 py-2">المدونة</a>
+                    <a href="#contact" class="text-gray-800 hover:text-orange-500 py-2">التواصل</a>
                     <button onclick="openBookingModal()" class="gradient-bg text-white px-6 py-3 rounded-lg font-semibold text-center">
-                        Book Free Consultation
+                        احجز استشارة مجانية
                     </button>
                 </div>
             </div>
@@ -303,35 +313,35 @@
     <!-- Hero Section -->
     <section id="home" class="pt-32 pb-20 px-4 relative overflow-hidden">
         <!-- Background Gradient Circles -->
-        <div class="absolute top-20 right-20 w-96 h-96 gradient-bg rounded-full opacity-20 blur-3xl"></div>
-        <div class="absolute bottom-20 left-20 w-96 h-96 gradient-bg rounded-full opacity-20 blur-3xl"></div>
+        <div class="absolute top-20 left-20 w-96 h-96 gradient-bg rounded-full opacity-20 blur-3xl"></div>
+        <div class="absolute bottom-20 right-20 w-96 h-96 gradient-bg rounded-full opacity-20 blur-3xl"></div>
 
         <div class="container mx-auto">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Left Content -->
-                <div class="fade-in-up">
-                    <p class="text-orange-500 font-semibold text-lg mb-4">BE WITH US, BE UNIQUE</p>
+                <!-- Right Content (Arabic RTL) -->
+                <div class="fade-in-up order-2 lg:order-1">
+                    <p class="text-orange-500 font-semibold text-lg mb-4">كن معنا، كن مميزاً</p>
                     <h1 class="text-6xl lg:text-7xl font-bold mb-6">
-                        Transform Your<br>
-                        <span class="gradient-text">Digital Presence</span>
+                        حوّل حضورك<br>
+                        <span class="gradient-text">الرقمي</span>
                     </h1>
                     <p class="text-gray-600 text-lg mb-8 leading-relaxed">
-                        Leading marketing & media agency in the GCC region. We empower youth through the power of media and innovation.
+                        وكالة رائدة في التسويق والإعلام في منطقة الخليج. نمكّن الشباب من خلال قوة الإعلام والابتكار.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <button onclick="openBookingModal()" class="gradient-bg text-white px-8 py-4 rounded-lg font-semibold text-lg btn-primary">
-                            Free Consultation
+                            استشارة مجانية
                         </button>
                         <a href="#services" class="border-2 border-orange-500 text-orange-500 px-8 py-4 rounded-lg font-semibold text-lg text-center hover:bg-orange-500 hover:text-white transition-all">
-                            Explore Services
+                            استكشف الخدمات
                         </a>
                     </div>
                 </div>
 
-                <!-- Right Content - Image -->
-                <div class="fade-in-up float-animation">
+                <!-- Left Content - Image (Arabic RTL) -->
+                <div class="fade-in-up float-animation order-1 lg:order-2">
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
-                         alt="Digital Marketing"
+                         alt="التسويق الرقمي"
                          class="rounded-2xl shadow-2xl w-full">
                 </div>
             </div>
@@ -344,19 +354,19 @@
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center text-white">
                 <div class="fade-in-up">
                     <h3 class="text-5xl font-bold mb-2 counter" data-target="500">0</h3>
-                    <p class="text-lg opacity-90">Projects Completed</p>
+                    <p class="text-lg opacity-90">مشروع مكتمل</p>
                 </div>
                 <div class="fade-in-up">
                     <h3 class="text-5xl font-bold mb-2 counter" data-target="200">0</h3>
-                    <p class="text-lg opacity-90">Happy Clients</p>
+                    <p class="text-lg opacity-90">عميل سعيد</p>
                 </div>
                 <div class="fade-in-up">
                     <h3 class="text-5xl font-bold mb-2 counter" data-target="15">0</h3>
-                    <p class="text-lg opacity-90">Years Experience</p>
+                    <p class="text-lg opacity-90">سنة خبرة</p>
                 </div>
                 <div class="fade-in-up">
                     <h3 class="text-5xl font-bold mb-2 counter" data-target="98">0</h3>
-                    <p class="text-lg opacity-90">Client Satisfaction</p>
+                    <p class="text-lg opacity-90">رضا العملاء</p>
                 </div>
             </div>
         </div>
@@ -369,67 +379,67 @@
                 <!-- Left - Image -->
                 <div class="fade-in-up">
                     <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
-                         alt="Team"
+                         alt="الفريق"
                          class="rounded-2xl shadow-xl w-full">
                 </div>
 
                 <!-- Right - Content -->
                 <div class="fade-in-up">
-                    <h2 class="text-5xl font-bold mb-6">About <span class="gradient-text">PYRAMEDIA</span></h2>
+                    <h2 class="text-5xl font-bold mb-6">عن <span class="gradient-text">بيراميديا</span></h2>
 
                     <div class="mb-6">
-                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Our Vision</h3>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">رؤيتنا</h3>
                         <p class="text-gray-600 leading-relaxed">
-                            "We aim to position ourselves as one of the leading media and marketing agencies in the GCC region by 2025"
+                            "نهدف إلى أن نكون من الوكالات الرائدة في مجال الإعلام والتسويق في منطقة الخليج بحلول عام 2025"
                         </p>
                     </div>
 
                     <div class="mb-8">
-                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Our Mission</h3>
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">رسالتنا</h3>
                         <p class="text-gray-600 leading-relaxed">
-                            "To empower the youth through the power of media and innovation, bringing your brand to the people and the people to your brand."
+                            "تمكين الشباب من خلال قوة الإعلام والابتكار، نوصل علامتك التجارية للناس والناس لعلامتك التجارية."
                         </p>
                     </div>
 
                     <!-- Features Grid -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="flex items-start space-x-4">
+                        <div class="flex items-start space-x-4 space-x-reverse">
                             <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-chart-line text-white text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg mb-1">Data-Driven</h4>
-                                <p class="text-gray-600 text-sm">Strategic decisions backed by analytics</p>
+                                <h4 class="font-bold text-lg mb-1">قائم على البيانات</h4>
+                                <p class="text-gray-600 text-sm">قرارات استراتيجية مدعومة بالتحليلات</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start space-x-4">
+                        <div class="flex items-start space-x-4 space-x-reverse">
                             <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-rocket text-white text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg mb-1">Innovation</h4>
-                                <p class="text-gray-600 text-sm">Cutting-edge solutions</p>
+                                <h4 class="font-bold text-lg mb-1">الابتكار</h4>
+                                <p class="text-gray-600 text-sm">حلول متطورة ومبتكرة</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start space-x-4">
+                        <div class="flex items-start space-x-4 space-x-reverse">
                             <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-users text-white text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg mb-1">Client-Focused</h4>
-                                <p class="text-gray-600 text-sm">Your success is our priority</p>
+                                <h4 class="font-bold text-lg mb-1">محور العميل</h4>
+                                <p class="text-gray-600 text-sm">نجاحك هو أولويتنا</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start space-x-4">
+                        <div class="flex items-start space-x-4 space-x-reverse">
                             <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-cog text-white text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg mb-1">Automation</h4>
-                                <p class="text-gray-600 text-sm">Streamline and scale efficiently</p>
+                                <h4 class="font-bold text-lg mb-1">الأتمتة</h4>
+                                <p class="text-gray-600 text-sm">تبسيط وتوسيع بكفاءة</p>
                             </div>
                         </div>
                     </div>
@@ -442,8 +452,8 @@
     <section id="services" class="py-20 px-4 bg-gray-50">
         <div class="container mx-auto">
             <div class="text-center mb-16 fade-in-up">
-                <h2 class="text-5xl font-bold mb-4">Our <span class="gradient-text">Services</span></h2>
-                <p class="text-gray-600 text-lg">Comprehensive digital solutions tailored to your business needs</p>
+                <h2 class="text-5xl font-bold mb-4">خدماتنا <span class="gradient-text">المميزة</span></h2>
+                <p class="text-gray-600 text-lg">حلول رقمية شاملة مصممة خصيصاً لاحتياجات عملك</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -452,28 +462,28 @@
                     <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
                         <i class="fas fa-bullhorn text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Digital Marketing</h3>
-                    <p class="text-gray-600 mb-6">Strategic campaigns across all digital channels</p>
+                    <h3 class="text-2xl font-bold mb-4">التسويق الرقمي</h3>
+                    <p class="text-gray-600 mb-6">حملات استراتيجية عبر جميع القنوات الرقمية</p>
                     <ul class="space-y-2 mb-6">
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Social Media Marketing
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            التسويق عبر وسائل التواصل
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            SEO & SEM
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            تحسين محركات البحث SEO
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Content Marketing
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            تسويق المحتوى
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Email Campaigns
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            الحملات البريدية
                         </li>
                     </ul>
                     <button onclick="openServiceModal('digital-marketing')" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold btn-primary">
-                        Learn More
+                        اعرف المزيد
                     </button>
                 </div>
 
@@ -482,28 +492,28 @@
                     <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
                         <i class="fas fa-robot text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Marketing Automation</h3>
-                    <p class="text-gray-600 mb-6">Streamline marketing processes with intelligent automation</p>
+                    <h3 class="text-2xl font-bold mb-4">أتمتة التسويق</h3>
+                    <p class="text-gray-600 mb-6">تبسيط العمليات التسويقية بأتمتة ذكية</p>
                     <ul class="space-y-2 mb-6">
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Workflow Automation
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            أتمتة سير العمل
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Lead Nurturing
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            رعاية العملاء المحتملين
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            CRM Integration
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            التكامل مع CRM
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Analytics & Reporting
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            التحليلات والتقارير
                         </li>
                     </ul>
                     <button onclick="openServiceModal('automation')" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold btn-primary">
-                        Learn More
+                        اعرف المزيد
                     </button>
                 </div>
 
@@ -512,28 +522,28 @@
                     <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
                         <i class="fas fa-palette text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Brand Strategy</h3>
-                    <p class="text-gray-600 mb-6">Build powerful brand identity</p>
+                    <h3 class="text-2xl font-bold mb-4">استراتيجية العلامة التجارية</h3>
+                    <p class="text-gray-600 mb-6">بناء هوية علامة تجارية قوية ومميزة</p>
                     <ul class="space-y-2 mb-6">
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Brand Identity Design
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            تصميم الهوية التجارية
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Market Positioning
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            تحديد موقع السوق
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Brand Guidelines
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            دليل العلامة التجارية
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Visual Assets
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            الأصول البصرية
                         </li>
                     </ul>
                     <button onclick="openServiceModal('brand-strategy')" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold btn-primary">
-                        Learn More
+                        اعرف المزيد
                     </button>
                 </div>
 
@@ -542,28 +552,28 @@
                     <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
                         <i class="fas fa-brain text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">AI Solutions</h3>
-                    <p class="text-gray-600 mb-6">Leverage AI for business growth</p>
+                    <h3 class="text-2xl font-bold mb-4">حلول الذكاء الاصطناعي</h3>
+                    <p class="text-gray-600 mb-6">الاستفادة من الذكاء الاصطناعي لنمو الأعمال</p>
                     <ul class="space-y-2 mb-6">
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            AI Chatbots
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            روبوتات المحادثة الذكية
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Predictive Analytics
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            التحليلات التنبؤية
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Content Generation
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            توليد المحتوى
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Customer Insights
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            رؤى العملاء
                         </li>
                     </ul>
                     <button onclick="openServiceModal('ai-solutions')" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold btn-primary">
-                        Learn More
+                        اعرف المزيد
                     </button>
                 </div>
 
@@ -572,28 +582,28 @@
                     <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
                         <i class="fas fa-video text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Video Production</h3>
-                    <p class="text-gray-600 mb-6">Professional video content that engages</p>
+                    <h3 class="text-2xl font-bold mb-4">إنتاج الفيديو</h3>
+                    <p class="text-gray-600 mb-6">محتوى فيديو احترافي يجذب الجمهور</p>
                     <ul class="space-y-2 mb-6">
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Commercial Videos
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            فيديوهات تجارية
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Social Media Content
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            محتوى وسائل التواصل
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Animated Explainers
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            فيديوهات توضيحية متحركة
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Event Coverage
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            تغطية الفعاليات
                         </li>
                     </ul>
                     <button onclick="openServiceModal('video-production')" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold btn-primary">
-                        Learn More
+                        اعرف المزيد
                     </button>
                 </div>
 
@@ -602,28 +612,28 @@
                     <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
                         <i class="fas fa-chart-bar text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Analytics & Insights</h3>
-                    <p class="text-gray-600 mb-6">Data-driven decisions for better ROI</p>
+                    <h3 class="text-2xl font-bold mb-4">التحليلات والرؤى</h3>
+                    <p class="text-gray-600 mb-6">قرارات مبنية على البيانات لعائد أفضل</p>
                     <ul class="space-y-2 mb-6">
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Performance Tracking
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            تتبع الأداء
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Custom Dashboards
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            لوحات تحكم مخصصة
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            ROI Analysis
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            تحليل عائد الاستثمار
                         </li>
                         <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check text-orange-500 mr-3"></i>
-                            Competitor Analysis
+                            <i class="fas fa-check text-orange-500 ml-3"></i>
+                            تحليل المنافسين
                         </li>
                     </ul>
                     <button onclick="openServiceModal('analytics')" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold btn-primary">
-                        Learn More
+                        اعرف المزيد
                     </button>
                 </div>
             </div>
@@ -634,8 +644,8 @@
     <section id="case-studies" class="py-20 px-4 bg-white">
         <div class="container mx-auto">
             <div class="text-center mb-16 fade-in-up">
-                <h2 class="text-5xl font-bold mb-4">Success <span class="gradient-text">Stories</span></h2>
-                <p class="text-gray-600 text-lg">Discover how we've helped businesses transform their digital presence</p>
+                <h2 class="text-5xl font-bold mb-4">قصص <span class="gradient-text">النجاح</span></h2>
+                <p class="text-gray-600 text-lg">اكتشف كيف ساعدنا الشركات في تحويل حضورها الرقمي</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -643,33 +653,33 @@
                 <div class="portfolio-card bg-white rounded-2xl shadow-lg overflow-hidden">
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1556742111-a301076d9d18?w=600&h=400&fit=crop"
-                             alt="E-Commerce Case Study"
+                             alt="دراسة حالة التجارة الإلكترونية"
                              class="w-full h-64 object-cover">
-                        <span class="absolute top-4 left-4 gradient-bg text-white px-4 py-2 rounded-full text-sm font-semibold">
-                            E-Commerce
+                        <span class="absolute top-4 right-4 gradient-bg text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            التجارة الإلكترونية
                         </span>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-3">300% Sales Growth</h3>
-                        <p class="text-gray-600 mb-6">Transformed online presence for leading UAE retailer</p>
+                        <h3 class="text-2xl font-bold mb-3">نمو المبيعات 300%</h3>
+                        <p class="text-gray-600 mb-6">تحويل الحضور الإلكتروني لمتجر رائد في الإمارات</p>
 
                         <div class="grid grid-cols-3 gap-4 mb-6">
                             <div class="bg-orange-50 p-3 rounded-lg text-center">
                                 <p class="text-2xl font-bold text-orange-500">300%</p>
-                                <p class="text-xs text-gray-600">Growth</p>
+                                <p class="text-xs text-gray-600">النمو</p>
                             </div>
                             <div class="bg-orange-50 p-3 rounded-lg text-center">
-                                <p class="text-2xl font-bold text-orange-500">6M</p>
-                                <p class="text-xs text-gray-600">Timeline</p>
+                                <p class="text-2xl font-bold text-orange-500">6 شهور</p>
+                                <p class="text-xs text-gray-600">الفترة</p>
                             </div>
                             <div class="bg-orange-50 p-3 rounded-lg text-center">
                                 <p class="text-2xl font-bold text-orange-500">50K+</p>
-                                <p class="text-xs text-gray-600">Customers</p>
+                                <p class="text-xs text-gray-600">العملاء</p>
                             </div>
                         </div>
 
                         <button class="w-full border-2 border-orange-500 text-orange-500 py-3 rounded-lg font-semibold hover:bg-orange-500 hover:text-white transition-all">
-                            View Full Case Study
+                            عرض دراسة الحالة
                         </button>
                     </div>
                 </div>
@@ -678,33 +688,33 @@
                 <div class="portfolio-card bg-white rounded-2xl shadow-lg overflow-hidden">
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
-                             alt="Branding Case Study"
+                             alt="دراسة حالة العلامة التجارية"
                              class="w-full h-64 object-cover">
-                        <span class="absolute top-4 left-4 gradient-bg text-white px-4 py-2 rounded-full text-sm font-semibold">
-                            Branding
+                        <span class="absolute top-4 right-4 gradient-bg text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            العلامة التجارية
                         </span>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-3">Complete Rebrand Success</h3>
-                        <p class="text-gray-600 mb-6">Elevated brand identity for tech startup</p>
+                        <h3 class="text-2xl font-bold mb-3">إعادة تسمية ناجحة</h3>
+                        <p class="text-gray-600 mb-6">تطوير هوية العلامة التجارية لشركة تقنية ناشئة</p>
 
                         <div class="grid grid-cols-3 gap-4 mb-6">
                             <div class="bg-orange-50 p-3 rounded-lg text-center">
                                 <p class="text-2xl font-bold text-orange-500">250%</p>
-                                <p class="text-xs text-gray-600">Awareness</p>
+                                <p class="text-xs text-gray-600">الوعي</p>
                             </div>
                             <div class="bg-orange-50 p-3 rounded-lg text-center">
-                                <p class="text-2xl font-bold text-orange-500">12M</p>
-                                <p class="text-xs text-gray-600">Timeline</p>
+                                <p class="text-2xl font-bold text-orange-500">12 شهر</p>
+                                <p class="text-xs text-gray-600">الفترة</p>
                             </div>
                             <div class="bg-orange-50 p-3 rounded-lg text-center">
                                 <p class="text-2xl font-bold text-orange-500">#1</p>
-                                <p class="text-xs text-gray-600">Position</p>
+                                <p class="text-xs text-gray-600">الموقع</p>
                             </div>
                         </div>
 
                         <button class="w-full border-2 border-orange-500 text-orange-500 py-3 rounded-lg font-semibold hover:bg-orange-500 hover:text-white transition-all">
-                            View Full Case Study
+                            عرض دراسة الحالة
                         </button>
                     </div>
                 </div>
@@ -713,33 +723,33 @@
                 <div class="portfolio-card bg-white rounded-2xl shadow-lg overflow-hidden">
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&h=400&fit=crop"
-                             alt="Automation Case Study"
+                             alt="دراسة حالة الأتمتة"
                              class="w-full h-64 object-cover">
-                        <span class="absolute top-4 left-4 gradient-bg text-white px-4 py-2 rounded-full text-sm font-semibold">
-                            Automation
+                        <span class="absolute top-4 right-4 gradient-bg text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            الأتمتة
                         </span>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-3">80% Efficiency Gain</h3>
-                        <p class="text-gray-600 mb-6">Automated marketing processes for SaaS company</p>
+                        <h3 class="text-2xl font-bold mb-3">كفاءة أعلى بنسبة 80%</h3>
+                        <p class="text-gray-600 mb-6">أتمتة العمليات التسويقية لشركة SaaS</p>
 
                         <div class="grid grid-cols-3 gap-4 mb-6">
                             <div class="bg-orange-50 p-3 rounded-lg text-center">
                                 <p class="text-2xl font-bold text-orange-500">80%</p>
-                                <p class="text-xs text-gray-600">Time Saved</p>
+                                <p class="text-xs text-gray-600">الوقت</p>
                             </div>
                             <div class="bg-orange-50 p-3 rounded-lg text-center">
-                                <p class="text-2xl font-bold text-orange-500">3M</p>
-                                <p class="text-xs text-gray-600">Timeline</p>
+                                <p class="text-2xl font-bold text-orange-500">3 أشهر</p>
+                                <p class="text-xs text-gray-600">الفترة</p>
                             </div>
                             <div class="bg-orange-50 p-3 rounded-lg text-center">
                                 <p class="text-2xl font-bold text-orange-500">$500K</p>
-                                <p class="text-xs text-gray-600">Savings</p>
+                                <p class="text-xs text-gray-600">الوفورات</p>
                             </div>
                         </div>
 
                         <button class="w-full border-2 border-orange-500 text-orange-500 py-3 rounded-lg font-semibold hover:bg-orange-500 hover:text-white transition-all">
-                            View Full Case Study
+                            عرض دراسة الحالة
                         </button>
                     </div>
                 </div>
@@ -751,26 +761,26 @@
     <section id="blog" class="py-20 px-4 bg-gray-50">
         <div class="container mx-auto">
             <div class="text-center mb-16 fade-in-up">
-                <h2 class="text-5xl font-bold mb-4">Latest <span class="gradient-text">Insights</span></h2>
-                <p class="text-gray-600 text-lg">Stay updated with the latest trends in marketing, automation, and AI</p>
+                <h2 class="text-5xl font-bold mb-4">أحدث <span class="gradient-text">المقالات</span></h2>
+                <p class="text-gray-600 text-lg">ابقَ على اطلاع بأحدث الاتجاهات في التسويق والأتمتة والذكاء الاصطناعي</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Blog Post 1 -->
                 <div class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1557838923-2985c318be48?w=600&h=400&fit=crop"
-                         alt="Blog Post"
+                         alt="مقال المدونة"
                          class="w-full h-56 object-cover">
                     <div class="p-8">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <span class="text-orange-500 font-semibold text-sm">Marketing</span>
+                        <div class="flex items-center space-x-4 space-x-reverse mb-4">
+                            <span class="text-orange-500 font-semibold text-sm">التسويق</span>
                             <span class="text-gray-400">•</span>
-                            <span class="text-gray-500 text-sm">5 min read</span>
+                            <span class="text-gray-500 text-sm">5 دقائق قراءة</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">The Future of Digital Marketing in 2025</h3>
-                        <p class="text-gray-600 mb-4">Discover emerging trends and technologies shaping the future of digital marketing in the GCC region...</p>
+                        <h3 class="text-xl font-bold mb-3">مستقبل التسويق الرقمي في 2025</h3>
+                        <p class="text-gray-600 mb-4">اكتشف الاتجاهات والتقنيات الناشئة التي تشكل مستقبل التسويق الرقمي في منطقة الخليج...</p>
                         <a href="#" class="text-orange-500 font-semibold hover:text-orange-600 transition-colors">
-                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                            اقرأ المزيد <i class="fas fa-arrow-left mr-2"></i>
                         </a>
                     </div>
                 </div>
@@ -778,18 +788,18 @@
                 <!-- Blog Post 2 -->
                 <div class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
-                         alt="Blog Post"
+                         alt="مقال المدونة"
                          class="w-full h-56 object-cover">
                     <div class="p-8">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <span class="text-orange-500 font-semibold text-sm">Automation</span>
+                        <div class="flex items-center space-x-4 space-x-reverse mb-4">
+                            <span class="text-orange-500 font-semibold text-sm">الأتمتة</span>
                             <span class="text-gray-400">•</span>
-                            <span class="text-gray-500 text-sm">7 min read</span>
+                            <span class="text-gray-500 text-sm">7 دقائق قراءة</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Marketing Automation Best Practices</h3>
-                        <p class="text-gray-600 mb-4">Learn how to implement effective marketing automation strategies that drive results and save time...</p>
+                        <h3 class="text-xl font-bold mb-3">أفضل ممارسات أتمتة التسويق</h3>
+                        <p class="text-gray-600 mb-4">تعلم كيفية تطبيق استراتيجيات فعالة لأتمتة التسويق تحقق نتائج وتوفر الوقت...</p>
                         <a href="#" class="text-orange-500 font-semibold hover:text-orange-600 transition-colors">
-                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                            اقرأ المزيد <i class="fas fa-arrow-left mr-2"></i>
                         </a>
                     </div>
                 </div>
@@ -797,18 +807,18 @@
                 <!-- Blog Post 3 -->
                 <div class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop"
-                         alt="Blog Post"
+                         alt="مقال المدونة"
                          class="w-full h-56 object-cover">
                     <div class="p-8">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <span class="text-orange-500 font-semibold text-sm">AI & Technology</span>
+                        <div class="flex items-center space-x-4 space-x-reverse mb-4">
+                            <span class="text-orange-500 font-semibold text-sm">الذكاء الاصطناعي</span>
                             <span class="text-gray-400">•</span>
-                            <span class="text-gray-500 text-sm">6 min read</span>
+                            <span class="text-gray-500 text-sm">6 دقائق قراءة</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">AI-Powered Marketing: Complete Guide</h3>
-                        <p class="text-gray-600 mb-4">Explore how artificial intelligence is revolutionizing marketing strategies and customer experiences...</p>
+                        <h3 class="text-xl font-bold mb-3">التسويق بالذكاء الاصطناعي: دليل شامل</h3>
+                        <p class="text-gray-600 mb-4">اكتشف كيف يُحدث الذكاء الاصطناعي ثورة في استراتيجيات التسويق وتجارب العملاء...</p>
                         <a href="#" class="text-orange-500 font-semibold hover:text-orange-600 transition-colors">
-                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                            اقرأ المزيد <i class="fas fa-arrow-left mr-2"></i>
                         </a>
                     </div>
                 </div>
@@ -816,7 +826,7 @@
 
             <div class="text-center mt-12">
                 <button class="gradient-bg text-white px-8 py-4 rounded-lg font-semibold text-lg btn-primary">
-                    View All Articles
+                    عرض جميع المقالات
                 </button>
             </div>
         </div>
@@ -828,39 +838,39 @@
             <div class="grid lg:grid-cols-2 gap-12">
                 <!-- Left - Contact Info -->
                 <div class="fade-in-up">
-                    <h2 class="text-5xl font-bold mb-6">Let's <span class="gradient-text">Connect</span></h2>
+                    <h2 class="text-5xl font-bold mb-6">لنتواصل <span class="gradient-text">معاً</span></h2>
                     <p class="text-gray-600 text-lg mb-8">
-                        Ready to transform your digital presence? Get in touch with us today for a free consultation.
+                        هل أنت مستعد لتحويل حضورك الرقمي؟ تواصل معنا اليوم للحصول على استشارة مجانية.
                     </p>
 
                     <div class="space-y-6">
-                        <div class="flex items-start space-x-4">
+                        <div class="flex items-start space-x-4 space-x-reverse">
                             <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-envelope text-white text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg mb-1">Email</h4>
+                                <h4 class="font-bold text-lg mb-1">البريد الإلكتروني</h4>
                                 <p class="text-gray-600">info@pyramedia.ae</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start space-x-4">
+                        <div class="flex items-start space-x-4 space-x-reverse">
                             <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-phone text-white text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg mb-1">Phone</h4>
+                                <h4 class="font-bold text-lg mb-1">الهاتف</h4>
                                 <p class="text-gray-600">+971 XX XXX XXXX</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start space-x-4">
+                        <div class="flex items-start space-x-4 space-x-reverse">
                             <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-map-marker-alt text-white text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg mb-1">Location</h4>
-                                <p class="text-gray-600">Dubai, UAE</p>
+                                <h4 class="font-bold text-lg mb-1">الموقع</h4>
+                                <p class="text-gray-600">دبي، الإمارات العربية المتحدة</p>
                             </div>
                         </div>
                     </div>
@@ -871,7 +881,7 @@
                     <div class="bg-white rounded-2xl shadow-xl p-8">
                         <form id="contactForm" class="space-y-6">
                             <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Your Name *</label>
+                                <label class="block text-gray-700 font-semibold mb-2">الاسم *</label>
                                 <input type="text"
                                        name="name"
                                        required
@@ -879,7 +889,7 @@
                             </div>
 
                             <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Email Address *</label>
+                                <label class="block text-gray-700 font-semibold mb-2">البريد الإلكتروني *</label>
                                 <input type="email"
                                        name="email"
                                        required
@@ -887,14 +897,14 @@
                             </div>
 
                             <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Phone Number</label>
+                                <label class="block text-gray-700 font-semibold mb-2">رقم الهاتف</label>
                                 <input type="tel"
                                        name="phone"
                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none transition-colors">
                             </div>
 
                             <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Your Message *</label>
+                                <label class="block text-gray-700 font-semibold mb-2">رسالتك *</label>
                                 <textarea name="message"
                                           required
                                           rows="4"
@@ -902,7 +912,7 @@
                             </div>
 
                             <button type="submit" class="w-full gradient-bg text-white py-4 rounded-lg font-semibold text-lg btn-primary">
-                                Send Message
+                                إرسال الرسالة
                             </button>
                         </form>
                     </div>
@@ -917,45 +927,45 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <!-- Company Info -->
                 <div>
-                    <div class="flex items-center space-x-3 mb-4">
+                    <div class="flex items-center space-x-3 space-x-reverse mb-4">
                         <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
                             <i class="fas fa-pyramid text-white text-xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold">PYRAMEDIA</h3>
+                        <h3 class="text-2xl font-bold">بيراميديا</h3>
                     </div>
                     <p class="text-gray-400 leading-relaxed">
-                        Leading marketing & media agency in the GCC region, empowering businesses through innovation.
+                        وكالة رائدة في التسويق والإعلام في منطقة الخليج، نمكّن الأعمال من خلال الابتكار.
                     </p>
                 </div>
 
                 <!-- Quick Links -->
                 <div>
-                    <h4 class="text-xl font-bold mb-4">Quick Links</h4>
+                    <h4 class="text-xl font-bold mb-4">روابط سريعة</h4>
                     <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-orange-500 transition-colors">Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-orange-500 transition-colors">About Us</a></li>
-                        <li><a href="#services" class="text-gray-400 hover:text-orange-500 transition-colors">Services</a></li>
-                        <li><a href="#case-studies" class="text-gray-400 hover:text-orange-500 transition-colors">Case Studies</a></li>
-                        <li><a href="#blog" class="text-gray-400 hover:text-orange-500 transition-colors">Blog</a></li>
+                        <li><a href="#home" class="text-gray-400 hover:text-orange-500 transition-colors">الرئيسية</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-orange-500 transition-colors">من نحن</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-orange-500 transition-colors">الخدمات</a></li>
+                        <li><a href="#case-studies" class="text-gray-400 hover:text-orange-500 transition-colors">دراسات الحالة</a></li>
+                        <li><a href="#blog" class="text-gray-400 hover:text-orange-500 transition-colors">المدونة</a></li>
                     </ul>
                 </div>
 
                 <!-- Services List -->
                 <div>
-                    <h4 class="text-xl font-bold mb-4">Services</h4>
+                    <h4 class="text-xl font-bold mb-4">خدماتنا</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">Digital Marketing</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">Marketing Automation</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">AI Solutions</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">Brand Strategy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">Video Production</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">التسويق الرقمي</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">أتمتة التسويق</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">حلول الذكاء الاصطناعي</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">استراتيجية العلامة التجارية</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">إنتاج الفيديو</a></li>
                     </ul>
                 </div>
 
                 <!-- Follow Us -->
                 <div>
-                    <h4 class="text-xl font-bold mb-4">Follow Us</h4>
-                    <div class="flex space-x-4">
+                    <h4 class="text-xl font-bold mb-4">تابعنا</h4>
+                    <div class="flex space-x-4 space-x-reverse">
                         <a href="#" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center hover:scale-110 transition-transform">
                             <i class="fab fa-facebook-f text-white"></i>
                         </a>
@@ -972,13 +982,13 @@
 
                     <!-- Newsletter -->
                     <div class="mt-6">
-                        <p class="text-gray-400 mb-3">Subscribe to our newsletter</p>
+                        <p class="text-gray-400 mb-3">اشترك في نشرتنا الإخبارية</p>
                         <form id="newsletterForm" class="flex">
                             <input type="email"
                                    name="newsletter_email"
-                                   placeholder="Your email"
-                                   class="flex-1 px-4 py-2 rounded-l-lg bg-gray-800 text-white border-2 border-gray-700 focus:border-orange-500 focus:outline-none">
-                            <button type="submit" class="gradient-bg px-6 py-2 rounded-r-lg font-semibold">
+                                   placeholder="بريدك الإلكتروني"
+                                   class="flex-1 px-4 py-2 rounded-r-lg bg-gray-800 text-white border-2 border-gray-700 focus:border-orange-500 focus:outline-none">
+                            <button type="submit" class="gradient-bg px-6 py-2 rounded-l-lg font-semibold">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
                         </form>
@@ -989,10 +999,10 @@
             <!-- Bottom Bar -->
             <div class="border-t border-gray-800 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                    <p class="text-gray-400">© 2025 PYRAMEDIA. All rights reserved.</p>
-                    <div class="flex space-x-6">
-                        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">Privacy Policy</a>
-                        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">Terms of Service</a>
+                    <p class="text-gray-400">© 2025 بيراميديا. جميع الحقوق محفوظة.</p>
+                    <div class="flex space-x-6 space-x-reverse">
+                        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">سياسة الخصوصية</a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">شروط الخدمة</a>
                     </div>
                 </div>
             </div>
@@ -1004,7 +1014,7 @@
         <div class="modal-content bg-white rounded-2xl shadow-2xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <!-- Close Button -->
             <div class="sticky top-0 bg-white p-6 border-b flex justify-between items-center z-10">
-                <h2 class="text-3xl font-bold">Book Free Consultation</h2>
+                <h2 class="text-3xl font-bold">احجز استشارة مجانية</h2>
                 <button onclick="closeBookingModal()" class="text-gray-500 hover:text-gray-700 text-3xl">
                     <i class="fas fa-times"></i>
                 </button>
@@ -1012,28 +1022,28 @@
 
             <!-- Step 1: Date & Time Selection -->
             <div id="bookingStep1" class="p-8">
-                <h3 class="text-2xl font-bold mb-6">Select Date & Time</h3>
+                <h3 class="text-2xl font-bold mb-6">اختر التاريخ والوقت</h3>
 
                 <!-- Calendar -->
                 <div class="mb-8">
                     <div class="flex justify-between items-center mb-4">
-                        <button onclick="previousMonth()" class="p-2 hover:bg-gray-100 rounded-lg">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <h4 id="calendarMonth" class="text-xl font-bold"></h4>
                         <button onclick="nextMonth()" class="p-2 hover:bg-gray-100 rounded-lg">
                             <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <h4 id="calendarMonth" class="text-xl font-bold"></h4>
+                        <button onclick="previousMonth()" class="p-2 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-chevron-left"></i>
                         </button>
                     </div>
 
                     <div class="grid grid-cols-7 gap-2 mb-2">
-                        <div class="text-center font-semibold text-gray-600 py-2">Sun</div>
-                        <div class="text-center font-semibold text-gray-600 py-2">Mon</div>
-                        <div class="text-center font-semibold text-gray-600 py-2">Tue</div>
-                        <div class="text-center font-semibold text-gray-600 py-2">Wed</div>
-                        <div class="text-center font-semibold text-gray-600 py-2">Thu</div>
-                        <div class="text-center font-semibold text-gray-600 py-2">Fri</div>
-                        <div class="text-center font-semibold text-gray-600 py-2">Sat</div>
+                        <div class="text-center font-semibold text-gray-600 py-2">الأحد</div>
+                        <div class="text-center font-semibold text-gray-600 py-2">الاثنين</div>
+                        <div class="text-center font-semibold text-gray-600 py-2">الثلاثاء</div>
+                        <div class="text-center font-semibold text-gray-600 py-2">الأربعاء</div>
+                        <div class="text-center font-semibold text-gray-600 py-2">الخميس</div>
+                        <div class="text-center font-semibold text-gray-600 py-2">الجمعة</div>
+                        <div class="text-center font-semibold text-gray-600 py-2">السبت</div>
                     </div>
 
                     <div id="calendarDays" class="grid grid-cols-7 gap-2"></div>
@@ -1041,7 +1051,7 @@
 
                 <!-- Time Slots -->
                 <div class="mb-8">
-                    <h4 class="text-xl font-bold mb-4">Available Time Slots</h4>
+                    <h4 class="text-xl font-bold mb-4">الأوقات المتاحة</h4>
                     <div id="timeSlots" class="grid grid-cols-3 gap-3"></div>
                 </div>
 
@@ -1049,27 +1059,27 @@
                         onclick="showBookingStep2()"
                         disabled
                         class="w-full gradient-bg text-white py-4 rounded-lg font-semibold text-lg disabled:opacity-50 disabled:cursor-not-allowed">
-                    Continue
+                    متابعة
                 </button>
             </div>
 
             <!-- Step 2: Client Information -->
             <div id="bookingStep2" class="p-8 hidden">
                 <button onclick="showBookingStep1()" class="mb-6 text-orange-500 hover:text-orange-600 font-semibold">
-                    <i class="fas fa-arrow-left mr-2"></i> Back
+                    <i class="fas fa-arrow-right ml-2"></i> رجوع
                 </button>
 
-                <h3 class="text-2xl font-bold mb-6">Your Information</h3>
+                <h3 class="text-2xl font-bold mb-6">معلوماتك</h3>
 
                 <!-- Selected Date & Time Display -->
                 <div id="selectedDateTime" class="bg-orange-50 p-4 rounded-lg mb-6 border-2 border-orange-200">
-                    <p class="font-semibold text-gray-800">Selected Appointment:</p>
+                    <p class="font-semibold text-gray-800">الموعد المختار:</p>
                     <p class="text-orange-600 text-lg font-bold" id="appointmentDisplay"></p>
                 </div>
 
                 <form id="bookingForm" class="space-y-6">
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Your Name *</label>
+                        <label class="block text-gray-700 font-semibold mb-2">الاسم *</label>
                         <input type="text"
                                name="client_name"
                                required
@@ -1077,7 +1087,7 @@
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Email Address *</label>
+                        <label class="block text-gray-700 font-semibold mb-2">البريد الإلكتروني *</label>
                         <input type="email"
                                name="client_email"
                                required
@@ -1085,7 +1095,7 @@
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Phone Number *</label>
+                        <label class="block text-gray-700 font-semibold mb-2">رقم الهاتف *</label>
                         <input type="tel"
                                name="client_phone"
                                required
@@ -1093,14 +1103,14 @@
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Company Name</label>
+                        <label class="block text-gray-700 font-semibold mb-2">اسم الشركة</label>
                         <input type="text"
                                name="company_name"
                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">What can we help you with? *</label>
+                        <label class="block text-gray-700 font-semibold mb-2">كيف يمكننا مساعدتك؟ *</label>
                         <textarea name="help_description"
                                   required
                                   rows="4"
@@ -1108,7 +1118,7 @@
                     </div>
 
                     <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-lg font-semibold text-lg transition-colors">
-                        Confirm Booking
+                        تأكيد الحجز
                     </button>
                 </form>
             </div>
@@ -1130,29 +1140,29 @@
 
                 <form id="serviceInquiryForm" class="space-y-6">
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Your Name *</label>
+                        <label class="block text-gray-700 font-semibold mb-2">الاسم *</label>
                         <input type="text" name="inquiry_name" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Email *</label>
+                        <label class="block text-gray-700 font-semibold mb-2">البريد الإلكتروني *</label>
                         <input type="email" name="inquiry_email" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Phone *</label>
+                        <label class="block text-gray-700 font-semibold mb-2">الهاتف *</label>
                         <input type="tel" name="inquiry_phone" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
                     </div>
 
                     <div id="serviceSpecificField"></div>
 
                     <div>
-                        <label class="block text-gray-700 font-semibold mb-2">Additional Details</label>
+                        <label class="block text-gray-700 font-semibold mb-2">تفاصيل إضافية</label>
                         <textarea name="inquiry_details" rows="4" class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none resize-none"></textarea>
                     </div>
 
                     <button type="submit" class="w-full gradient-bg text-white py-4 rounded-lg font-semibold text-lg btn-primary">
-                        Submit Inquiry
+                        إرسال الاستفسار
                     </button>
                 </form>
             </div>
