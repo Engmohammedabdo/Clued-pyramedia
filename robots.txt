@@ -1,0 +1,44 @@
+# ========================================
+# PYRAMEDIA - Robots.txt
+# ========================================
+
+User-agent: *
+Allow: /
+Allow: /js/
+Allow: /css/
+Allow: /images/
+
+# Disallow sensitive directories
+Disallow: /php/
+Disallow: /data/
+Disallow: /logs/
+Disallow: /calendar/
+
+# Disallow specific files
+Disallow: /.htaccess
+Disallow: /.git/
+
+# Crawl delay (optional, adjust if needed)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://pyramedia.ae/sitemap.xml
+
+# ========================================
+# Specific Bot Rules
+# ========================================
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# Prevent bad bots (optional)
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10

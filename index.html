@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PYRAMEDIA - Leading marketing & media agency in the GCC region. We empower youth through the power of media and innovation.">
+    <meta name="keywords" content="marketing, media, digital marketing, automation, GCC, Dubai, brand strategy">
+    <title>PYRAMEDIA - Marketing & Media Solutions</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FF6B35;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .service-card, .portfolio-card, .blog-card {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover, .portfolio-card:hover, .blog-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+        }
+
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #0f0f0f;
+            color: #ffffff;
+        }
+
+        body.dark-mode .bg-white {
+            background-color: #1a1a1a !important;
+        }
+
+        body.dark-mode .bg-gray-50 {
+            background-color: #0f0f0f !important;
+        }
+
+        body.dark-mode .text-gray-600 {
+            color: #cccccc !important;
+        }
+
+        body.dark-mode .text-gray-800 {
+            color: #ffffff !important;
+        }
+
+        body.dark-mode .text-black {
+            color: #ffffff !important;
+        }
+
+        body.dark-mode footer {
+            background-color: #1a1a1a !important;
+        }
+
+        /* Navbar Blur Effect */
+        .navbar-blur {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        body.dark-mode .navbar-blur {
+            background-color: rgba(26, 26, 26, 0.9);
+        }
+
+        /* Calendar Styles */
+        .calendar-day {
+            transition: all 0.3s ease;
+        }
+
+        .calendar-day:hover:not(.disabled) {
+            background-color: #FF6B35;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .calendar-day.selected {
+            background-color: #FF6B35;
+            color: white;
+        }
+
+        .calendar-day.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .time-slot {
+            transition: all 0.3s ease;
+        }
+
+        .time-slot:hover {
+            background-color: #FF8C42;
+            color: white;
+        }
+
+        .time-slot.selected {
+            background-color: #FF6B35;
+            color: white;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            max-height: 500px;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #FF6B35 0%, #FF8C42 100%);
+            z-index: 10000;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 navbar-blur transition-all duration-300">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
+                        <i class="fas fa-pyramid text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold gradient-text">PYRAMEDIA</h1>
+                        <p class="text-xs text-gray-600">Marketing & Media Solutions</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-800 hover:text-orange-500">Home</a>
+                    <a href="#about" class="nav-link text-gray-800 hover:text-orange-500">About</a>
+                    <a href="#services" class="nav-link text-gray-800 hover:text-orange-500">Services</a>
+                    <a href="#case-studies" class="nav-link text-gray-800 hover:text-orange-500">Case Studies</a>
+                    <a href="#blog" class="nav-link text-gray-800 hover:text-orange-500">Blog</a>
+                    <a href="#contact" class="nav-link text-gray-800 hover:text-orange-500">Contact</a>
+                </div>
+
+                <!-- Right Side Actions -->
+                <div class="flex items-center space-x-4">
+                    <!-- Theme Toggle -->
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-moon text-xl text-gray-800"></i>
+                    </button>
+
+                    <!-- Book Consultation Button -->
+                    <button onclick="openBookingModal()" class="hidden lg:block gradient-bg text-white px-6 py-3 rounded-lg font-semibold btn-primary">
+                        Book Free Consultation
+                    </button>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button id="mobileMenuToggle" class="lg:hidden p-2">
+                        <i class="fas fa-bars text-2xl text-gray-800"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu lg:hidden">
+                <div class="flex flex-col space-y-4 mt-6">
+                    <a href="#home" class="text-gray-800 hover:text-orange-500 py-2">Home</a>
+                    <a href="#about" class="text-gray-800 hover:text-orange-500 py-2">About</a>
+                    <a href="#services" class="text-gray-800 hover:text-orange-500 py-2">Services</a>
+                    <a href="#case-studies" class="text-gray-800 hover:text-orange-500 py-2">Case Studies</a>
+                    <a href="#blog" class="text-gray-800 hover:text-orange-500 py-2">Blog</a>
+                    <a href="#contact" class="text-gray-800 hover:text-orange-500 py-2">Contact</a>
+                    <button onclick="openBookingModal()" class="gradient-bg text-white px-6 py-3 rounded-lg font-semibold text-center">
+                        Book Free Consultation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-4 relative overflow-hidden">
+        <!-- Background Gradient Circles -->
+        <div class="absolute top-20 right-20 w-96 h-96 gradient-bg rounded-full opacity-20 blur-3xl"></div>
+        <div class="absolute bottom-20 left-20 w-96 h-96 gradient-bg rounded-full opacity-20 blur-3xl"></div>
+
+        <div class="container mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="fade-in-up">
+                    <p class="text-orange-500 font-semibold text-lg mb-4">BE WITH US, BE UNIQUE</p>
+                    <h1 class="text-6xl lg:text-7xl font-bold mb-6">
+                        Transform Your<br>
+                        <span class="gradient-text">Digital Presence</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                        Leading marketing & media agency in the GCC region. We empower youth through the power of media and innovation.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="openBookingModal()" class="gradient-bg text-white px-8 py-4 rounded-lg font-semibold text-lg btn-primary">
+                            Free Consultation
+                        </button>
+                        <a href="#services" class="border-2 border-orange-500 text-orange-500 px-8 py-4 rounded-lg font-semibold text-lg text-center hover:bg-orange-500 hover:text-white transition-all">
+                            Explore Services
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Content - Image -->
+                <div class="fade-in-up float-animation">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
+                         alt="Digital Marketing"
+                         class="rounded-2xl shadow-2xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="gradient-bg py-16 px-4">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center text-white">
+                <div class="fade-in-up">
+                    <h3 class="text-5xl font-bold mb-2 counter" data-target="500">0</h3>
+                    <p class="text-lg opacity-90">Projects Completed</p>
+                </div>
+                <div class="fade-in-up">
+                    <h3 class="text-5xl font-bold mb-2 counter" data-target="200">0</h3>
+                    <p class="text-lg opacity-90">Happy Clients</p>
+                </div>
+                <div class="fade-in-up">
+                    <h3 class="text-5xl font-bold mb-2 counter" data-target="15">0</h3>
+                    <p class="text-lg opacity-90">Years Experience</p>
+                </div>
+                <div class="fade-in-up">
+                    <h3 class="text-5xl font-bold mb-2 counter" data-target="98">0</h3>
+                    <p class="text-lg opacity-90">Client Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 bg-white">
+        <div class="container mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left - Image -->
+                <div class="fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
+                         alt="Team"
+                         class="rounded-2xl shadow-xl w-full">
+                </div>
+
+                <!-- Right - Content -->
+                <div class="fade-in-up">
+                    <h2 class="text-5xl font-bold mb-6">About <span class="gradient-text">PYRAMEDIA</span></h2>
+
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Our Vision</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            "We aim to position ourselves as one of the leading media and marketing agencies in the GCC region by 2025"
+                        </p>
+                    </div>
+
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-800">Our Mission</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            "To empower the youth through the power of media and innovation, bringing your brand to the people and the people to your brand."
+                        </p>
+                    </div>
+
+                    <!-- Features Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-chart-line text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Data-Driven</h4>
+                                <p class="text-gray-600 text-sm">Strategic decisions backed by analytics</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-rocket text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Innovation</h4>
+                                <p class="text-gray-600 text-sm">Cutting-edge solutions</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-users text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Client-Focused</h4>
+                                <p class="text-gray-600 text-sm">Your success is our priority</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-cog text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Automation</h4>
+                                <p class="text-gray-600 text-sm">Streamline and scale efficiently</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-4 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-5xl font-bold mb-4">Our <span class="gradient-text">Services</span></h2>
+                <p class="text-gray-600 text-lg">Comprehensive digital solutions tailored to your business needs</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1: Digital Marketing -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bullhorn text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Digital Marketing</h3>
+                    <p class="text-gray-600 mb-6">Strategic campaigns across all digital channels</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Social Media Marketing
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            SEO & SEM
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Content Marketing
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Email Campaigns
+                        </li>
+                    </ul>
+                    <button onclick="openServiceModal('digital-marketing')" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold btn-primary">
+                        Learn More
+                    </button>
+                </div>
+
+                <!-- Service 2: Marketing Automation -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Marketing Automation</h3>
+                    <p class="text-gray-600 mb-6">Streamline marketing processes with intelligent automation</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Workflow Automation
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Lead Nurturing
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            CRM Integration
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Analytics & Reporting
+                        </li>
+                    </ul>
+                    <button onclick="openServiceModal('automation')" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold btn-primary">
+                        Learn More
+                    </button>
+                </div>
+
+                <!-- Service 3: Brand Strategy -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-palette text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Brand Strategy</h3>
+                    <p class="text-gray-600 mb-6">Build powerful brand identity</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Brand Identity Design
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Market Positioning
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Brand Guidelines
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Visual Assets
+                        </li>
+                    </ul>
+                    <button onclick="openServiceModal('brand-strategy')" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold btn-primary">
+                        Learn More
+                    </button>
+                </div>
+
+                <!-- Service 4: AI Solutions -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">AI Solutions</h3>
+                    <p class="text-gray-600 mb-6">Leverage AI for business growth</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            AI Chatbots
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Predictive Analytics
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Content Generation
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Customer Insights
+                        </li>
+                    </ul>
+                    <button onclick="openServiceModal('ai-solutions')" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold btn-primary">
+                        Learn More
+                    </button>
+                </div>
+
+                <!-- Service 5: Video Production -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-video text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Video Production</h3>
+                    <p class="text-gray-600 mb-6">Professional video content that engages</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Commercial Videos
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Social Media Content
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Animated Explainers
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Event Coverage
+                        </li>
+                    </ul>
+                    <button onclick="openServiceModal('video-production')" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold btn-primary">
+                        Learn More
+                    </button>
+                </div>
+
+                <!-- Service 6: Analytics & Insights -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-bar text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Analytics & Insights</h3>
+                    <p class="text-gray-600 mb-6">Data-driven decisions for better ROI</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Performance Tracking
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Custom Dashboards
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            ROI Analysis
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check text-orange-500 mr-3"></i>
+                            Competitor Analysis
+                        </li>
+                    </ul>
+                    <button onclick="openServiceModal('analytics')" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold btn-primary">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="py-20 px-4 bg-white">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-5xl font-bold mb-4">Success <span class="gradient-text">Stories</span></h2>
+                <p class="text-gray-600 text-lg">Discover how we've helped businesses transform their digital presence</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Case Study 1 -->
+                <div class="portfolio-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1556742111-a301076d9d18?w=600&h=400&fit=crop"
+                             alt="E-Commerce Case Study"
+                             class="w-full h-64 object-cover">
+                        <span class="absolute top-4 left-4 gradient-bg text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            E-Commerce
+                        </span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3">300% Sales Growth</h3>
+                        <p class="text-gray-600 mb-6">Transformed online presence for leading UAE retailer</p>
+
+                        <div class="grid grid-cols-3 gap-4 mb-6">
+                            <div class="bg-orange-50 p-3 rounded-lg text-center">
+                                <p class="text-2xl font-bold text-orange-500">300%</p>
+                                <p class="text-xs text-gray-600">Growth</p>
+                            </div>
+                            <div class="bg-orange-50 p-3 rounded-lg text-center">
+                                <p class="text-2xl font-bold text-orange-500">6M</p>
+                                <p class="text-xs text-gray-600">Timeline</p>
+                            </div>
+                            <div class="bg-orange-50 p-3 rounded-lg text-center">
+                                <p class="text-2xl font-bold text-orange-500">50K+</p>
+                                <p class="text-xs text-gray-600">Customers</p>
+                            </div>
+                        </div>
+
+                        <button class="w-full border-2 border-orange-500 text-orange-500 py-3 rounded-lg font-semibold hover:bg-orange-500 hover:text-white transition-all">
+                            View Full Case Study
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="portfolio-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
+                             alt="Branding Case Study"
+                             class="w-full h-64 object-cover">
+                        <span class="absolute top-4 left-4 gradient-bg text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            Branding
+                        </span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3">Complete Rebrand Success</h3>
+                        <p class="text-gray-600 mb-6">Elevated brand identity for tech startup</p>
+
+                        <div class="grid grid-cols-3 gap-4 mb-6">
+                            <div class="bg-orange-50 p-3 rounded-lg text-center">
+                                <p class="text-2xl font-bold text-orange-500">250%</p>
+                                <p class="text-xs text-gray-600">Awareness</p>
+                            </div>
+                            <div class="bg-orange-50 p-3 rounded-lg text-center">
+                                <p class="text-2xl font-bold text-orange-500">12M</p>
+                                <p class="text-xs text-gray-600">Timeline</p>
+                            </div>
+                            <div class="bg-orange-50 p-3 rounded-lg text-center">
+                                <p class="text-2xl font-bold text-orange-500">#1</p>
+                                <p class="text-xs text-gray-600">Position</p>
+                            </div>
+                        </div>
+
+                        <button class="w-full border-2 border-orange-500 text-orange-500 py-3 rounded-lg font-semibold hover:bg-orange-500 hover:text-white transition-all">
+                            View Full Case Study
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div class="portfolio-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&h=400&fit=crop"
+                             alt="Automation Case Study"
+                             class="w-full h-64 object-cover">
+                        <span class="absolute top-4 left-4 gradient-bg text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            Automation
+                        </span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3">80% Efficiency Gain</h3>
+                        <p class="text-gray-600 mb-6">Automated marketing processes for SaaS company</p>
+
+                        <div class="grid grid-cols-3 gap-4 mb-6">
+                            <div class="bg-orange-50 p-3 rounded-lg text-center">
+                                <p class="text-2xl font-bold text-orange-500">80%</p>
+                                <p class="text-xs text-gray-600">Time Saved</p>
+                            </div>
+                            <div class="bg-orange-50 p-3 rounded-lg text-center">
+                                <p class="text-2xl font-bold text-orange-500">3M</p>
+                                <p class="text-xs text-gray-600">Timeline</p>
+                            </div>
+                            <div class="bg-orange-50 p-3 rounded-lg text-center">
+                                <p class="text-2xl font-bold text-orange-500">$500K</p>
+                                <p class="text-xs text-gray-600">Savings</p>
+                            </div>
+                        </div>
+
+                        <button class="w-full border-2 border-orange-500 text-orange-500 py-3 rounded-lg font-semibold hover:bg-orange-500 hover:text-white transition-all">
+                            View Full Case Study
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 px-4 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-5xl font-bold mb-4">Latest <span class="gradient-text">Insights</span></h2>
+                <p class="text-gray-600 text-lg">Stay updated with the latest trends in marketing, automation, and AI</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <div class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1557838923-2985c318be48?w=600&h=400&fit=crop"
+                         alt="Blog Post"
+                         class="w-full h-56 object-cover">
+                    <div class="p-8">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-orange-500 font-semibold text-sm">Marketing</span>
+                            <span class="text-gray-400">•</span>
+                            <span class="text-gray-500 text-sm">5 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">The Future of Digital Marketing in 2025</h3>
+                        <p class="text-gray-600 mb-4">Discover emerging trends and technologies shaping the future of digital marketing in the GCC region...</p>
+                        <a href="#" class="text-orange-500 font-semibold hover:text-orange-600 transition-colors">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
+                         alt="Blog Post"
+                         class="w-full h-56 object-cover">
+                    <div class="p-8">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-orange-500 font-semibold text-sm">Automation</span>
+                            <span class="text-gray-400">•</span>
+                            <span class="text-gray-500 text-sm">7 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Marketing Automation Best Practices</h3>
+                        <p class="text-gray-600 mb-4">Learn how to implement effective marketing automation strategies that drive results and save time...</p>
+                        <a href="#" class="text-orange-500 font-semibold hover:text-orange-600 transition-colors">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 3 -->
+                <div class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop"
+                         alt="Blog Post"
+                         class="w-full h-56 object-cover">
+                    <div class="p-8">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-orange-500 font-semibold text-sm">AI & Technology</span>
+                            <span class="text-gray-400">•</span>
+                            <span class="text-gray-500 text-sm">6 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">AI-Powered Marketing: Complete Guide</h3>
+                        <p class="text-gray-600 mb-4">Explore how artificial intelligence is revolutionizing marketing strategies and customer experiences...</p>
+                        <a href="#" class="text-orange-500 font-semibold hover:text-orange-600 transition-colors">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="gradient-bg text-white px-8 py-4 rounded-lg font-semibold text-lg btn-primary">
+                    View All Articles
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-white">
+        <div class="container mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Left - Contact Info -->
+                <div class="fade-in-up">
+                    <h2 class="text-5xl font-bold mb-6">Let's <span class="gradient-text">Connect</span></h2>
+                    <p class="text-gray-600 text-lg mb-8">
+                        Ready to transform your digital presence? Get in touch with us today for a free consultation.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Email</h4>
+                                <p class="text-gray-600">info@pyramedia.ae</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Phone</h4>
+                                <p class="text-gray-600">+971 XX XXX XXXX</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Location</h4>
+                                <p class="text-gray-600">Dubai, UAE</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right - Contact Form -->
+                <div class="fade-in-up">
+                    <div class="bg-white rounded-2xl shadow-xl p-8">
+                        <form id="contactForm" class="space-y-6">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Your Name *</label>
+                                <input type="text"
+                                       name="name"
+                                       required
+                                       class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none transition-colors">
+                            </div>
+
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Email Address *</label>
+                                <input type="email"
+                                       name="email"
+                                       required
+                                       class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none transition-colors">
+                            </div>
+
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Phone Number</label>
+                                <input type="tel"
+                                       name="phone"
+                                       class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none transition-colors">
+                            </div>
+
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2">Your Message *</label>
+                                <textarea name="message"
+                                          required
+                                          rows="4"
+                                          class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none transition-colors resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full gradient-bg text-white py-4 rounded-lg font-semibold text-lg btn-primary">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16 px-4">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
+                            <i class="fas fa-pyramid text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">PYRAMEDIA</h3>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">
+                        Leading marketing & media agency in the GCC region, empowering businesses through innovation.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-orange-500 transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-orange-500 transition-colors">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-orange-500 transition-colors">Services</a></li>
+                        <li><a href="#case-studies" class="text-gray-400 hover:text-orange-500 transition-colors">Case Studies</a></li>
+                        <li><a href="#blog" class="text-gray-400 hover:text-orange-500 transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services List -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">Digital Marketing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">Marketing Automation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">AI Solutions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">Brand Strategy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">Video Production</a></li>
+                    </ul>
+                </div>
+
+                <!-- Follow Us -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fab fa-facebook-f text-white"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fab fa-instagram text-white"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fab fa-linkedin-in text-white"></i>
+                        </a>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="mt-6">
+                        <p class="text-gray-400 mb-3">Subscribe to our newsletter</p>
+                        <form id="newsletterForm" class="flex">
+                            <input type="email"
+                                   name="newsletter_email"
+                                   placeholder="Your email"
+                                   class="flex-1 px-4 py-2 rounded-l-lg bg-gray-800 text-white border-2 border-gray-700 focus:border-orange-500 focus:outline-none">
+                            <button type="submit" class="gradient-bg px-6 py-2 rounded-r-lg font-semibold">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <p class="text-gray-400">© 2025 PYRAMEDIA. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content bg-white rounded-2xl shadow-2xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <!-- Close Button -->
+            <div class="sticky top-0 bg-white p-6 border-b flex justify-between items-center z-10">
+                <h2 class="text-3xl font-bold">Book Free Consultation</h2>
+                <button onclick="closeBookingModal()" class="text-gray-500 hover:text-gray-700 text-3xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Step 1: Date & Time Selection -->
+            <div id="bookingStep1" class="p-8">
+                <h3 class="text-2xl font-bold mb-6">Select Date & Time</h3>
+
+                <!-- Calendar -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-4">
+                        <button onclick="previousMonth()" class="p-2 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h4 id="calendarMonth" class="text-xl font-bold"></h4>
+                        <button onclick="nextMonth()" class="p-2 hover:bg-gray-100 rounded-lg">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-7 gap-2 mb-2">
+                        <div class="text-center font-semibold text-gray-600 py-2">Sun</div>
+                        <div class="text-center font-semibold text-gray-600 py-2">Mon</div>
+                        <div class="text-center font-semibold text-gray-600 py-2">Tue</div>
+                        <div class="text-center font-semibold text-gray-600 py-2">Wed</div>
+                        <div class="text-center font-semibold text-gray-600 py-2">Thu</div>
+                        <div class="text-center font-semibold text-gray-600 py-2">Fri</div>
+                        <div class="text-center font-semibold text-gray-600 py-2">Sat</div>
+                    </div>
+
+                    <div id="calendarDays" class="grid grid-cols-7 gap-2"></div>
+                </div>
+
+                <!-- Time Slots -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-bold mb-4">Available Time Slots</h4>
+                    <div id="timeSlots" class="grid grid-cols-3 gap-3"></div>
+                </div>
+
+                <button id="continueToStep2"
+                        onclick="showBookingStep2()"
+                        disabled
+                        class="w-full gradient-bg text-white py-4 rounded-lg font-semibold text-lg disabled:opacity-50 disabled:cursor-not-allowed">
+                    Continue
+                </button>
+            </div>
+
+            <!-- Step 2: Client Information -->
+            <div id="bookingStep2" class="p-8 hidden">
+                <button onclick="showBookingStep1()" class="mb-6 text-orange-500 hover:text-orange-600 font-semibold">
+                    <i class="fas fa-arrow-left mr-2"></i> Back
+                </button>
+
+                <h3 class="text-2xl font-bold mb-6">Your Information</h3>
+
+                <!-- Selected Date & Time Display -->
+                <div id="selectedDateTime" class="bg-orange-50 p-4 rounded-lg mb-6 border-2 border-orange-200">
+                    <p class="font-semibold text-gray-800">Selected Appointment:</p>
+                    <p class="text-orange-600 text-lg font-bold" id="appointmentDisplay"></p>
+                </div>
+
+                <form id="bookingForm" class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Your Name *</label>
+                        <input type="text"
+                               name="client_name"
+                               required
+                               class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Email Address *</label>
+                        <input type="email"
+                               name="client_email"
+                               required
+                               class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Phone Number *</label>
+                        <input type="tel"
+                               name="client_phone"
+                               required
+                               class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Company Name</label>
+                        <input type="text"
+                               name="company_name"
+                               class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">What can we help you with? *</label>
+                        <textarea name="help_description"
+                                  required
+                                  rows="4"
+                                  class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-lg font-semibold text-lg transition-colors">
+                        Confirm Booking
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Modal Template -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4">
+            <div class="p-6 border-b flex justify-between items-center">
+                <h2 id="serviceModalTitle" class="text-3xl font-bold"></h2>
+                <button onclick="closeServiceModal()" class="text-gray-500 hover:text-gray-700 text-3xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="p-8">
+                <p class="text-gray-600 mb-6" id="serviceModalDescription"></p>
+
+                <form id="serviceInquiryForm" class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Your Name *</label>
+                        <input type="text" name="inquiry_name" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Email *</label>
+                        <input type="email" name="inquiry_email" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Phone *</label>
+                        <input type="tel" name="inquiry_phone" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
+                    </div>
+
+                    <div id="serviceSpecificField"></div>
+
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Additional Details</label>
+                        <textarea name="inquiry_details" rows="4" class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full gradient-bg text-white py-4 rounded-lg font-semibold text-lg btn-primary">
+                        Submit Inquiry
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
