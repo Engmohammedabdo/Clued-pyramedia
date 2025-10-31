@@ -597,7 +597,63 @@ function removeFeaturedImage() {
     document.getElementById('featuredImagePreview').classList.add('hidden');
 }
 
-// Form validation
+// ==========================================
+// AUTO URL SLUG GENERATION
+// ==========================================
+
+function generateSlug(text) {
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, '') // Remove special characters
+        .replace(/[\s_-]+/g, '-')  // Replace spaces and underscores with hyphens
+        .replace(/^-+|-+$/g, '');  // Remove leading/trailing hyphens
+}
+
+// Auto-generate English slug from title
+const titleEnInput = document.querySelector('[name="title_en"]');
+const slugEnInput = document.querySelector('[name="slug_en"]');
+let manualSlugEn = <?= $isEdit && !empty($post['slug_en']) ? 'true' : 'false' ?>;
+
+titleEnInput.addEventListener('input', function() {
+    if (!manualSlugEn) {
+        slugEnInput.value = generateSlug(this.value);
+    }
+});
+
+slugEnInput.addEventListener('input', function() {
+    if (this.value.trim() !== '') {
+        manualSlugEn = true;
+        this.value = generateSlug(this.value);
+    } else {
+        manualSlugEn = false;
+    }
+});
+
+// Auto-generate Arabic slug from title
+const titleArInput = document.querySelector('[name="title_ar"]');
+const slugArInput = document.querySelector('[name="slug_ar"]');
+let manualSlugAr = <?= $isEdit && !empty($post['slug_ar']) ? 'true' : 'false' ?>;
+
+titleArInput.addEventListener('input', function() {
+    if (!manualSlugAr) {
+        slugArInput.value = generateSlug(this.value);
+    }
+});
+
+slugArInput.addEventListener('input', function() {
+    if (this.value.trim() !== '') {
+        manualSlugAr = true;
+        this.value = generateSlug(this.value);
+    } else {
+        manualSlugAr = false;
+    }
+});
+
+// ==========================================
+// FORM VALIDATION
+// ==========================================
+
 document.getElementById('postForm').addEventListener('submit', function(e) {
     const titleEn = document.querySelector('[name="title_en"]').value.trim();
     const contentEn = tinymce.get('content_en').getContent();
