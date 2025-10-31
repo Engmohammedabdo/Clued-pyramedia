@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Portfolio | PYRAMEDIA</title>
+    <meta name="description" content="Explore our portfolio of successful projects. See how we've helped brands transform their digital presence.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .portfolio-item.hidden {
+            opacity: 0;
+            transform: scale(0.8);
+            height: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-image {
+            position: relative;
+            padding-top: 75%;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-info {
+            background: white;
+            padding: 20px;
+            border-radius: 0 0 15px 15px;
+        }
+
+        /* Filter Buttons */
+        .filter-btn {
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: 2px solid #e5e5e5;
+            background: white;
+            color: #666;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .filter-btn:hover {
+            border-color: #FF6B35;
+            color: #FF6B35;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            border-color: #FF6B35;
+            color: white;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lightbox-image {
+            width: 100%;
+            max-height: 60vh;
+            object-fit: cover;
+        }
+
+        .lightbox-info {
+            padding: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
+                        <i class="fas fa-pyramid text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold gradient-text">PYRAMEDIA</h1>
+                        <p class="text-xs text-gray-600">Marketing & Media Solutions</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-orange-500 transition-colors">Home</a>
+                    <a href="blog.html" class="text-gray-700 hover:text-orange-500 transition-colors">Blog</a>
+                    <a href="testimonials.html" class="text-gray-700 hover:text-orange-500 transition-colors">Testimonials</a>
+                    <a href="index.html#contact" class="gradient-bg text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6" data-scroll>Our Portfolio</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto" data-scroll>
+                Discover how we've helped businesses transform their digital presence
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-4 mb-12" id="filterButtons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+                <button class="filter-btn" data-filter="marketing">Digital Marketing</button>
+                <button class="filter-btn" data-filter="video">Video Production</button>
+                <button class="filter-btn" data-filter="social">Social Media</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Items will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="absolute top-8 right-8 text-white text-4xl hover:text-orange-500 transition-colors z-10" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-content">
+            <img id="lightboxImage" class="lightbox-image" src="" alt="">
+            <div class="lightbox-info">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 id="lightboxTitle" class="text-3xl font-bold"></h2>
+                    <span id="lightboxCategory" class="px-4 py-2 gradient-bg text-white rounded-full text-sm font-semibold"></span>
+                </div>
+                <p id="lightboxDescription" class="text-gray-600 mb-6"></p>
+                <div class="flex flex-wrap gap-2" id="lightboxTags"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-20">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 PYRAMEDIA. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-6">
+                <a href="#" class="hover:text-orange-500 transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
+                <a href="#" class="hover:text-orange-500 transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="#" class="hover:text-orange-500 transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                <a href="#" class="hover:text-orange-500 transition-colors"><i class="fab fa-twitter text-2xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/animations.js"></script>
+    <script src="js/loading-screen.js"></script>
+    <script src="js/toast-notifications.js"></script>
+    <script src="js/scroll-to-top.js"></script>
+    <script src="js/micro-interactions.js"></script>
+
+    <script>
+        // Portfolio Data
+        const portfolioData = [
+            {
+                id: 1,
+                title: "TechVision UAE - Complete Rebranding",
+                category: "branding",
+                image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=800&h=600&fit=crop",
+                description: "Complete brand identity redesign for leading tech company in UAE. Includes logo, brand guidelines, and marketing materials.",
+                tags: ["Logo Design", "Brand Identity", "Marketing Collateral"]
+            },
+            {
+                id: 2,
+                title: "E-Commerce Platform for Fashion Brand",
+                category: "web",
+                image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop",
+                description: "Custom-built e-commerce platform with advanced features including AR try-on and personalized recommendations.",
+                tags: ["Web Development", "E-Commerce", "UX/UI Design"]
+            },
+            {
+                id: 3,
+                title: "Social Media Campaign - 500% Growth",
+                category: "social",
+                image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
+                description: "Complete social media strategy that increased engagement by 500% and followers by 300% in 6 months.",
+                tags: ["Social Media", "Content Strategy", "Influencer Marketing"]
+            },
+            {
+                id: 4,
+                title: "Digital Marketing Campaign - ROI 400%",
+                category: "marketing",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+                description: "Multi-channel digital marketing campaign achieving 400% ROI through strategic PPC, SEO, and content marketing.",
+                tags: ["PPC", "SEO", "Content Marketing", "Analytics"]
+            },
+            {
+                id: 5,
+                title: "Corporate Video Production",
+                category: "video",
+                image: "https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=800&h=600&fit=crop",
+                description: "Professional corporate video showcasing company culture and values. Includes drone footage and 3D animations.",
+                tags: ["Video Production", "Drone Footage", "3D Animation"]
+            },
+            {
+                id: 6,
+                title: "Restaurant Website & Branding",
+                category: "branding",
+                image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
+                description: "Complete branding package and responsive website for premium restaurant chain.",
+                tags: ["Branding", "Web Design", "Photography"]
+            },
+            {
+                id: 7,
+                title: "Mobile App Design - FinTech Startup",
+                category: "web",
+                image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop",
+                description: "User-centered mobile app design for innovative FinTech startup. Includes UX research and prototyping.",
+                tags: ["Mobile App", "UX Design", "Prototyping"]
+            },
+            {
+                id: 8,
+                title: "Instagram Influencer Campaign",
+                category: "social",
+                image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&h=600&fit=crop",
+                description: "Influencer marketing campaign reaching 5M impressions with 50+ micro and macro influencers.",
+                tags: ["Influencer Marketing", "Instagram", "Campaign Management"]
+            },
+            {
+                id: 9,
+                title: "Product Launch Campaign",
+                category: "marketing",
+                image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=600&fit=crop",
+                description: "360° product launch campaign including teaser videos, landing page, and multi-channel promotion.",
+                tags: ["Product Launch", "Multi-Channel", "Strategy"]
+            }
+        ];
+
+        // Initialize Portfolio
+        function initPortfolio() {
+            const grid = document.getElementById('portfolioGrid');
+
+            portfolioData.forEach(item => {
+                const element = createPortfolioItem(item);
+                grid.appendChild(element);
+            });
+        }
+
+        // Create Portfolio Item
+        function createPortfolioItem(item) {
+            const div = document.createElement('div');
+            div.className = 'portfolio-item';
+            div.dataset.category = item.category;
+            div.onclick = () => openLightbox(item);
+
+            div.innerHTML = `
+                <div class="portfolio-image">
+                    <img src="${item.image}" alt="${item.title}" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 class="text-white text-2xl font-bold mb-2">${item.title}</h3>
+                        <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm">
+                            ${item.category}
+                        </span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3 class="text-xl font-bold mb-2">${item.title}</h3>
+                    <p class="text-gray-600 text-sm">${item.description.substring(0, 100)}...</p>
+                </div>
+            `;
+
+            return div;
+        }
+
+        // Filter Portfolio
+        document.getElementById('filterButtons').addEventListener('click', (e) => {
+            if (e.target.classList.contains('filter-btn')) {
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                e.target.classList.add('active');
+
+                // Filter items
+                const filter = e.target.dataset.filter;
+                const items = document.querySelectorAll('.portfolio-item');
+
+                items.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            }
+        });
+
+        // Lightbox Functions
+        function openLightbox(item) {
+            const lightbox = document.getElementById('lightbox');
+            document.getElementById('lightboxImage').src = item.image;
+            document.getElementById('lightboxTitle').textContent = item.title;
+            document.getElementById('lightboxCategory').textContent = item.category;
+            document.getElementById('lightboxDescription').textContent = item.description;
+
+            const tagsContainer = document.getElementById('lightboxTags');
+            tagsContainer.innerHTML = '';
+            item.tags.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700';
+                span.textContent = tag;
+                tagsContainer.appendChild(span);
+            });
+
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Close on outside click
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+
+        // Initialize
+        initPortfolio();
+    </script>
+</body>
+</html>

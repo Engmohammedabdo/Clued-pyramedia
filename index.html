@@ -1197,9 +1197,14 @@
 
     <!-- JavaScript -->
     <script src="js/language.js"></script>
+    <script src="js/loading-screen.js"></script>
+    <script src="js/toast-notifications.js"></script>
+    <script src="js/scroll-to-top.js"></script>
+    <script src="js/micro-interactions.js"></script>
+    <script src="js/theme-customizer.js"></script>
+    <script src="js/animations.js"></script>
     <script src="js/main.js"></script>
     <script src="js/testimonials.js"></script>
-    <script src="js/animations.js"></script>
 
     <!-- Initialize Particle Background -->
     <script>
@@ -1213,6 +1218,13 @@
                     speed: 0.5
                 });
             }
+
+            // Show welcome toast
+            setTimeout(() => {
+                if (window.Toast) {
+                    Toast.info('Welcome to PYRAMEDIA! 🚀', 'Hello', { duration: 4000 });
+                }
+            }, 2000);
         });
     </script>
 </body>
