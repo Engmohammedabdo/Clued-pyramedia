@@ -539,8 +539,9 @@ class ThemeCustomizer {
             document.body.classList.remove('reduce-motion');
         }
 
-        // Primary color
+        // Primary color - Apply to actual elements
         root.style.setProperty('--primary-color', this.settings.primaryColor);
+        this.applyPrimaryColor(this.settings.primaryColor);
 
         // Font size
         const fontSizes = {
@@ -549,6 +550,7 @@ class ThemeCustomizer {
             large: '18px'
         };
         root.style.setProperty('--base-font-size', fontSizes[this.settings.fontSize]);
+        document.body.style.fontSize = fontSizes[this.settings.fontSize];
 
         // Corner radius
         const radiusValues = {
@@ -557,6 +559,7 @@ class ThemeCustomizer {
             round: '16px'
         };
         root.style.setProperty('--border-radius', radiusValues[this.settings.cornerRadius]);
+        this.applyBorderRadius(radiusValues[this.settings.cornerRadius]);
 
         // Animation speed
         const speedValues = {
@@ -565,6 +568,159 @@ class ThemeCustomizer {
             fast: '0.15s'
         };
         root.style.setProperty('--transition-speed', speedValues[this.settings.animationSpeed]);
+        this.applyAnimationSpeed(speedValues[this.settings.animationSpeed]);
+    }
+
+    applyPrimaryColor(color) {
+        // Create dynamic stylesheet if not exists
+        let styleId = 'theme-customizer-dynamic';
+        let styleEl = document.getElementById(styleId);
+
+        if (!styleEl) {
+            styleEl = document.createElement('style');
+            styleEl.id = styleId;
+            document.head.appendChild(styleEl);
+        }
+
+        // Calculate secondary color (lighter version)
+        const secondaryColor = this.lightenColor(color, 20);
+
+        styleEl.textContent = `
+            /* Dynamic Theme Colors */
+            .gradient-bg,
+            .btn-primary,
+            button.gradient-bg,
+            a.gradient-bg {
+                background: linear-gradient(135deg, ${color} 0%, ${secondaryColor} 100%) !important;
+            }
+
+            .text-orange-500,
+            .gradient-text {
+                color: ${color} !important;
+            }
+
+            .gradient-text {
+                background: linear-gradient(135deg, ${color} 0%, ${secondaryColor} 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .border-orange-500 {
+                border-color: ${color} !important;
+            }
+
+            .hover\\:text-orange-500:hover {
+                color: ${color} !important;
+            }
+
+            .hover\\:border-orange-500:hover {
+                border-color: ${color} !important;
+            }
+
+            .focus\\:border-orange-500:focus {
+                border-color: ${color} !important;
+            }
+
+            .bg-orange-500 {
+                background-color: ${color} !important;
+            }
+
+            /* Scroll to top button */
+            #scroll-to-top {
+                background: linear-gradient(135deg, ${color} 0%, ${secondaryColor} 100%) !important;
+            }
+
+            /* Toast notifications */
+            .toast.info {
+                border-left-color: ${color} !important;
+                color: ${color} !important;
+            }
+
+            .toast.info .toast-icon {
+                background: ${color} !important;
+            }
+
+            /* Theme customizer toggle */
+            .customizer-toggle {
+                background: linear-gradient(135deg, ${color} 0%, ${secondaryColor} 100%) !important;
+            }
+
+            .customizer-header {
+                background: linear-gradient(135deg, ${color} 0%, ${secondaryColor} 100%) !important;
+            }
+
+            /* Buttons */
+            .btn-group-item.active {
+                background: linear-gradient(135deg, ${color} 0%, ${secondaryColor} 100%) !important;
+                border-color: ${color} !important;
+            }
+
+            .btn-group-item:hover {
+                border-color: ${color} !important;
+                color: ${color} !important;
+            }
+
+            /* Links */
+            .nav-link::after {
+                background: ${color} !important;
+            }
+
+            .wave-input.has-value label,
+            .wave-input.focused label {
+                color: ${color} !important;
+            }
+
+            .wave-input::after {
+                background: linear-gradient(90deg, ${color}, ${secondaryColor}) !important;
+            }
+
+            /* Progress bars */
+            .progress-bar,
+            .scroll-progress {
+                background: linear-gradient(90deg, ${color} 0%, ${secondaryColor} 100%) !important;
+            }
+
+            /* Checkbox */
+            .checkbox-micro input:checked + .checkmark {
+                background: linear-gradient(135deg, ${color}, ${secondaryColor}) !important;
+                border-color: ${color} !important;
+            }
+
+            /* Switch */
+            .switch-micro input:checked + .switch-slider {
+                background: linear-gradient(135deg, ${color}, ${secondaryColor}) !important;
+            }
+        `;
+    }
+
+    applyBorderRadius(radius) {
+        document.querySelectorAll('button, .btn, input, textarea, select, .card, .rounded-lg, .rounded-xl, .rounded-2xl').forEach(el => {
+            if (!el.classList.contains('rounded-full')) {
+                el.style.borderRadius = radius;
+            }
+        });
+    }
+
+    applyAnimationSpeed(speed) {
+        document.querySelectorAll('*').forEach(el => {
+            const currentTransition = window.getComputedStyle(el).transition;
+            if (currentTransition && currentTransition !== 'none' && currentTransition !== 'all 0s ease 0s') {
+                el.style.transitionDuration = speed;
+            }
+        });
+    }
+
+    lightenColor(color, percent) {
+        const num = parseInt(color.replace("#",""), 16);
+        const amt = Math.round(2.55 * percent);
+        const R = (num >> 16) + amt;
+        const G = (num >> 8 & 0x00FF) + amt;
+        const B = (num & 0x0000FF) + amt;
+        return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 +
+            (G<255?G<1?0:G:255)*0x100 +
+            (B<255?B<1?0:B:255))
+            .toString(16).slice(1);
     }
 
     resetSettings() {

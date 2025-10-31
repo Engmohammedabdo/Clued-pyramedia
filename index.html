@@ -254,8 +254,8 @@
                     <a href="#home" class="nav-link text-gray-800 hover:text-orange-500">Home</a>
                     <a href="#about" class="nav-link text-gray-800 hover:text-orange-500">About</a>
                     <a href="#services" class="nav-link text-gray-800 hover:text-orange-500">Services</a>
-                    <a href="#case-studies" class="nav-link text-gray-800 hover:text-orange-500">Case Studies</a>
-                    <a href="#blog" class="nav-link text-gray-800 hover:text-orange-500">Blog</a>
+                    <a href="#portfolio" class="nav-link text-gray-800 hover:text-orange-500">Portfolio</a>
+                    <a href="blog.html" class="nav-link text-gray-800 hover:text-orange-500">Blog</a>
                     <a href="#contact" class="nav-link text-gray-800 hover:text-orange-500">Contact</a>
                 </div>
 
@@ -858,6 +858,46 @@
         </div>
     </section>
 
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-4 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-12" data-scroll>
+                <h2 class="text-5xl font-bold mb-4">Our <span class="gradient-text">Portfolio</span></h2>
+                <p class="text-gray-600 text-xl max-w-2xl mx-auto">
+                    Explore some of our successful projects and see how we've helped businesses grow
+                </p>
+            </div>
+
+            <!-- Portfolio Carousel -->
+            <div class="relative" data-scroll>
+                <div class="portfolio-carousel-container overflow-hidden">
+                    <div class="portfolio-carousel flex transition-transform duration-500 ease-out" id="portfolioCarousel">
+                        <!-- Portfolio items will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button class="carousel-btn carousel-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all z-10" onclick="portfolioCarousel.prev()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all z-10" onclick="portfolioCarousel.next()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Dots -->
+                <div class="flex justify-center gap-2 mt-8" id="portfolioDots"></div>
+            </div>
+
+            <!-- View All Button -->
+            <div class="text-center mt-12" data-scroll>
+                <a href="portfolio.html" class="inline-block gradient-bg text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all">
+                    <i class="fas fa-grip-horizontal mr-2"></i>
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-20 px-4 bg-white">
         <div class="container mx-auto">
@@ -1203,6 +1243,7 @@
     <script src="js/micro-interactions.js"></script>
     <script src="js/theme-customizer.js"></script>
     <script src="js/animations.js"></script>
+    <script src="js/portfolio-carousel.js"></script>
     <script src="js/main.js"></script>
     <script src="js/testimonials.js"></script>
 
