@@ -28,11 +28,11 @@ $post = $post ?? [];
                 Back to Posts
             </a>
             <?php if ($isEdit && $post['status'] === 'published'): ?>
-            <a href="/ccode/blog-post.html?slug=<?= $post['slug_en'] ?>" target="_blank" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+            <a href="/blog-post.html?slug=<?= $post['slug_en'] ?>" target="_blank" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
                 <i class="fas fa-external-link-alt mr-2"></i>
                 View Live (EN)
             </a>
-            <a href="/ccode/blog-post-ar.html?slug=<?= $post['slug_ar'] ?>" target="_blank" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
+            <a href="/blog-post-ar.html?slug=<?= $post['slug_ar'] ?>" target="_blank" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
                 <i class="fas fa-external-link-alt mr-2"></i>
                 View Live (AR)
             </a>

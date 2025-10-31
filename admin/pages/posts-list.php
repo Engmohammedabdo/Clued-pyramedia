@@ -256,7 +256,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     <?php if ($post['status'] === 'published'): ?>
-                                    <a href="/ccode/blog-post.html?slug=<?= $post['slug_en'] ?>"
+                                    <a href="/blog-post.html?slug=<?= $post['slug_en'] ?>"
                                        target="_blank"
                                        class="text-green-600 hover:text-green-800"
                                        title="View Live">

@@ -430,7 +430,7 @@
         // Load Article
         async function loadArticle() {
             try {
-                const response = await fetch(`/ccode/php/blog-api.php?action=single&lang=ar&slug=${postSlug}`);
+                const response = await fetch(`/php/blog-api.php?action=single&lang=ar&slug=${postSlug}`);
                 const result = await response.json();
 
                 if (!result.success || !result.data) throw new Error('Not found');
@@ -523,7 +523,7 @@
 
         async function loadRelated(postId) {
             try {
-                const response = await fetch(`/ccode/php/blog-api.php?action=related&lang=ar&post_id=${postId}&limit=3`);
+                const response = await fetch(`/php/blog-api.php?action=related&lang=ar&post_id=${postId}&limit=3`);
                 const result = await response.json();
 
                 if (result.success && result.data.length) {
