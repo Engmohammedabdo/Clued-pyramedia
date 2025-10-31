@@ -301,38 +301,39 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-20 px-4 relative overflow-hidden">
+    <section id="home" class="pt-32 pb-20 px-4 relative overflow-hidden" id="heroParticles">
         <!-- Background Gradient Circles -->
         <div class="absolute top-20 right-20 w-96 h-96 gradient-bg rounded-full opacity-20 blur-3xl"></div>
         <div class="absolute bottom-20 left-20 w-96 h-96 gradient-bg rounded-full opacity-20 blur-3xl"></div>
 
-        <div class="container mx-auto">
+        <div class="container mx-auto relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Left Content -->
-                <div class="fade-in-up">
-                    <p class="text-orange-500 font-semibold text-lg mb-4">BE WITH US, BE UNIQUE</p>
-                    <h1 class="text-6xl lg:text-7xl font-bold mb-6">
+                <div data-scroll class="fade-in-up">
+                    <p class="text-orange-500 font-semibold text-lg mb-4" data-scroll>BE WITH US, BE UNIQUE</p>
+                    <h1 class="text-6xl lg:text-7xl font-bold mb-6" data-scroll>
                         Transform Your<br>
                         <span class="gradient-text">Digital Presence</span>
                     </h1>
-                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed" data-scroll>
                         Leading marketing & media agency in the GCC region. We empower youth through the power of media and innovation.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="openBookingModal()" class="gradient-bg text-white px-8 py-4 rounded-lg font-semibold text-lg btn-primary">
+                    <div class="flex flex-col sm:flex-row gap-4" data-scroll>
+                        <button onclick="openBookingModal()" class="gradient-bg text-white px-8 py-4 rounded-lg font-semibold text-lg btn-primary" data-magnetic>
                             Free Consultation
                         </button>
-                        <a href="#services" class="border-2 border-orange-500 text-orange-500 px-8 py-4 rounded-lg font-semibold text-lg text-center hover:bg-orange-500 hover:text-white transition-all">
+                        <a href="#services" class="border-2 border-orange-500 text-orange-500 px-8 py-4 rounded-lg font-semibold text-lg text-center hover:bg-orange-500 hover:text-white transition-all" data-magnetic>
                             Explore Services
                         </a>
                     </div>
                 </div>
 
                 <!-- Right Content - Image -->
-                <div class="fade-in-up float-animation">
+                <div class="fade-in-up float-animation" data-scroll data-image-reveal>
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
                          alt="Digital Marketing"
-                         class="rounded-2xl shadow-2xl w-full">
+                         class="rounded-2xl shadow-2xl w-full"
+                         loading="lazy">
                 </div>
             </div>
         </div>
@@ -342,20 +343,20 @@
     <section class="gradient-bg py-16 px-4">
         <div class="container mx-auto">
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center text-white">
-                <div class="fade-in-up">
-                    <h3 class="text-5xl font-bold mb-2 counter" data-target="500">0</h3>
+                <div data-scroll class="fade-in-up">
+                    <h3 class="text-5xl font-bold mb-2" data-countup="500" data-suffix="+">0</h3>
                     <p class="text-lg opacity-90">Projects Completed</p>
                 </div>
-                <div class="fade-in-up">
-                    <h3 class="text-5xl font-bold mb-2 counter" data-target="200">0</h3>
+                <div data-scroll class="fade-in-up">
+                    <h3 class="text-5xl font-bold mb-2" data-countup="200" data-suffix="+">0</h3>
                     <p class="text-lg opacity-90">Happy Clients</p>
                 </div>
-                <div class="fade-in-up">
-                    <h3 class="text-5xl font-bold mb-2 counter" data-target="15">0</h3>
+                <div data-scroll class="fade-in-up">
+                    <h3 class="text-5xl font-bold mb-2" data-countup="15" data-suffix="+">0</h3>
                     <p class="text-lg opacity-90">Years Experience</p>
                 </div>
-                <div class="fade-in-up">
-                    <h3 class="text-5xl font-bold mb-2 counter" data-target="98">0</h3>
+                <div data-scroll class="fade-in-up">
+                    <h3 class="text-5xl font-bold mb-2" data-countup="98" data-suffix="%">0</h3>
                     <p class="text-lg opacity-90">Client Satisfaction</p>
                 </div>
             </div>
@@ -1198,5 +1199,21 @@
     <script src="js/language.js"></script>
     <script src="js/main.js"></script>
     <script src="js/testimonials.js"></script>
+    <script src="js/animations.js"></script>
+
+    <!-- Initialize Particle Background -->
+    <script>
+        // Initialize particle background for hero section
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.PyramediaAnimations && window.innerWidth > 768) {
+                new window.PyramediaAnimations.ParticleBackground('heroParticles', {
+                    particleCount: 40,
+                    particleColor: 'rgba(255, 107, 53, 0.6)',
+                    particleSize: 3,
+                    speed: 0.5
+                });
+            }
+        });
+    </script>
 </body>
 </html>

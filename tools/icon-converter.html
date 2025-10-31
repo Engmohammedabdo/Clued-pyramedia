@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWA Icon Generator - PYRAMEDIA</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .upload-area {
+            border: 3px dashed #ddd;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            border-color: #FF6B35;
+            background: #fff5f2;
+        }
+
+        .upload-area.dragover {
+            border-color: #FF6B35;
+            background: #fff5f2;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .preview-card {
+            background: #f9f9f9;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #eee;
+        }
+
+        .preview-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background: white;
+            padding: 10px;
+        }
+
+        .preview-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .preview-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .download-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+
+        .instructions {
+            background: #f0f8ff;
+            border-left: 4px solid #FF6B35;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .instructions h3 {
+            color: #FF6B35;
+            margin-bottom: 10px;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+            color: #555;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 PWA Icon Generator</h1>
+        <p class="subtitle">Generate all required PWA icons from SVG or PNG</p>
+
+        <div class="instructions">
+            <h3>📖 How to Use</h3>
+            <ol>
+                <li>Upload your SVG logo or a high-resolution PNG (512x512 recommended)</li>
+                <li>Click "Generate Icons" to create all required sizes</li>
+                <li>Download each generated icon</li>
+                <li>Upload the icons to your <code>/images/</code> directory</li>
+                <li>Verify the paths in <code>manifest.json</code></li>
+            </ol>
+        </div>
+
+        <div class="upload-area" id="uploadArea">
+            <svg width="64" height="64" fill="#ccc" viewBox="0 0 24 24" style="margin-bottom: 15px;">
+                <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
+            </svg>
+            <h3>Drop your SVG or PNG here</h3>
+            <p>or click to browse</p>
+            <input type="file" id="fileInput" accept=".svg,.png" />
+            <button class="btn" onclick="document.getElementById('fileInput').click()">
+                Choose File
+            </button>
+        </div>
+
+        <div id="preview" style="text-align: center; margin-bottom: 20px; display: none;">
+            <h3>Preview:</h3>
+            <img id="previewImage" style="max-width: 200px; border-radius: 15px; margin-top: 15px;" />
+        </div>
+
+        <div style="text-align: center;">
+            <button class="btn" id="generateBtn" disabled onclick="generateIcons()">
+                Generate Icons
+            </button>
+            <button class="btn" onclick="downloadAll()" id="downloadAllBtn" style="display: none;">
+                Download All Icons
+            </button>
+        </div>
+
+        <div class="preview-grid" id="iconsGrid"></div>
+    </div>
+
+    <script>
+        let uploadedImage = null;
+        const iconSizes = [
+            { size: 16, name: 'favicon-16x16.png', desc: 'Browser Tab Icon' },
+            { size: 32, name: 'favicon-32x32.png', desc: 'Browser Favicon' },
+            { size: 180, name: 'apple-touch-icon.png', desc: 'iOS Home Screen' },
+            { size: 192, name: 'icon-192.png', desc: 'Android Home Screen' },
+            { size: 512, name: 'icon-512.png', desc: 'High-Res Android' }
+        ];
+        let generatedIcons = [];
+
+        // Upload area drag and drop
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+
+        uploadArea.addEventListener('click', () => fileInput.click());
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            if (file) handleFile(file);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) handleFile(file);
+        });
+
+        function handleFile(file) {
+            if (!file.type.match('image/svg.*') && !file.type.match('image/png.*')) {
+                alert('Please upload an SVG or PNG file');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                uploadedImage = e.target.result;
+                document.getElementById('previewImage').src = uploadedImage;
+                document.getElementById('preview').style.display = 'block';
+                document.getElementById('generateBtn').disabled = false;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function generateIcons() {
+            if (!uploadedImage) return;
+
+            const grid = document.getElementById('iconsGrid');
+            grid.innerHTML = '';
+            generatedIcons = [];
+
+            iconSizes.forEach(iconConfig => {
+                const card = document.createElement('div');
+                card.className = 'preview-card';
+
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = iconConfig.size;
+                    canvas.height = iconConfig.size;
+                    const ctx = canvas.getContext('2d');
+
+                    // Draw white background for PNG with transparency
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(0, 0, iconConfig.size, iconConfig.size);
+
+                    // Draw image
+                    ctx.drawImage(img, 0, 0, iconConfig.size, iconConfig.size);
+
+                    const dataUrl = canvas.toDataURL('image/png');
+                    generatedIcons.push({
+                        name: iconConfig.name,
+                        dataUrl: dataUrl
+                    });
+
+                    card.innerHTML = `
+                        <img src="${dataUrl}" alt="${iconConfig.name}" />
+                        <h3>${iconConfig.size}x${iconConfig.size}</h3>
+                        <p>${iconConfig.desc}</p>
+                        <button class="download-btn" onclick="downloadIcon('${dataUrl}', '${iconConfig.name}')">
+                            Download
+                        </button>
+                    `;
+
+                    grid.appendChild(card);
+                };
+
+                img.src = uploadedImage;
+            });
+
+            document.getElementById('downloadAllBtn').style.display = 'inline-block';
+        }
+
+        function downloadIcon(dataUrl, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = dataUrl;
+            link.click();
+        }
+
+        function downloadAll() {
+            generatedIcons.forEach((icon, index) => {
+                setTimeout(() => {
+                    downloadIcon(icon.dataUrl, icon.name);
+                }, index * 300);
+            });
+        }
+    </script>
+</body>
+</html>

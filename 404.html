@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | PYRAMEDIA</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+        }
+
+        /* 404 Number Animation */
+        .error-number {
+            font-size: 12rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FF6B35 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite, float 3s ease-in-out infinite;
+            text-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Glowing circles background */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .circle:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        .circle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 2s;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
+        /* Animated icon */
+        .animated-icon {
+            font-size: 5rem;
+            animation: spin 10s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Button hover effect */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Card animation */
+        .error-card {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Particles */
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: rise 8s linear infinite;
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: -100px;
+                opacity: 0.6;
+            }
+            100% {
+                bottom: 100vh;
+                opacity: 0;
+            }
+        }
+
+        /* Quick links hover */
+        .quick-link {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .quick-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #FF6B35;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .quick-link:hover::after {
+            width: 100%;
+        }
+
+        .quick-link:hover {
+            color: #FF6B35;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .error-number {
+                font-size: 8rem;
+            }
+
+            .animated-icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background circles -->
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+    <!-- Floating particles -->
+    <script>
+        // Create floating particles
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 5 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 8 + 's';
+            particle.style.animationDuration = Math.random() * 5 + 5 + 's';
+            document.body.appendChild(particle);
+        }
+    </script>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="error-card max-w-4xl mx-auto text-center">
+            <!-- Animated Icon -->
+            <div class="mb-8">
+                <i class="fas fa-compass animated-icon text-white opacity-50"></i>
+            </div>
+
+            <!-- 404 Number -->
+            <h1 class="error-number mb-8">404</h1>
+
+            <!-- Message -->
+            <div class="bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl p-12 mb-8">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                    Oops! Page Not Found
+                </h2>
+                <p class="text-xl text-gray-600 mb-8">
+                    The page you're looking for seems to have wandered off into the digital wilderness.
+                </p>
+
+                <!-- Search bar -->
+                <div class="max-w-xl mx-auto mb-8">
+                    <form action="/" method="get" class="relative">
+                        <input
+                            type="text"
+                            name="search"
+                            placeholder="Search for what you need..."
+                            class="w-full px-6 py-4 pr-32 rounded-full border-2 border-gray-300 focus:border-orange-500 focus:outline-none text-lg transition-all"
+                        >
+                        <button
+                            type="submit"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 gradient-bg text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all"
+                        >
+                            <i class="fas fa-search mr-2"></i>
+                            Search
+                        </button>
+                    </form>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                    <a
+                        href="/index.html"
+                        class="btn-primary gradient-bg text-white px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center"
+                    >
+                        <i class="fas fa-home mr-2"></i>
+                        Back to Homepage
+                    </a>
+                    <a
+                        href="/blog.html"
+                        class="bg-white text-orange-500 border-2 border-orange-500 px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center hover:bg-orange-50 transition-all"
+                    >
+                        <i class="fas fa-book mr-2"></i>
+                        Visit Blog
+                    </a>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="border-t-2 border-gray-200 pt-8">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">Quick Links</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <a href="/index.html#services" class="quick-link text-gray-600 font-medium py-2">
+                            <i class="fas fa-briefcase mr-2"></i>
+                            Services
+                        </a>
+                        <a href="/blog.html" class="quick-link text-gray-600 font-medium py-2">
+                            <i class="fas fa-newspaper mr-2"></i>
+                            Blog
+                        </a>
+                        <a href="/testimonials.html" class="quick-link text-gray-600 font-medium py-2">
+                            <i class="fas fa-comments mr-2"></i>
+                            Testimonials
+                        </a>
+                        <a href="/index.html#contact" class="quick-link text-gray-600 font-medium py-2">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fun error codes -->
+            <div class="text-white/80 text-sm">
+                <p class="mb-2">
+                    <i class="fas fa-code mr-2"></i>
+                    Error Code: 404 | Page Not Found
+                </p>
+                <p>
+                    <i class="fas fa-clock mr-2"></i>
+                    Timestamp: <span id="timestamp"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Display current timestamp
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+
+        // Easter egg: Konami code
+        let konamiCode = [];
+        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.key);
+            konamiCode = konamiCode.slice(-konamiSequence.length);
+
+            if (konamiCode.join('') === konamiSequence.join('')) {
+                // Easter egg activated!
+                document.body.style.animation = 'spin 2s ease-in-out';
+                setTimeout(() => {
+                    alert('🎉 Konami Code Activated! You found the secret! Redirecting to homepage...');
+                    window.location.href = '/index.html';
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>

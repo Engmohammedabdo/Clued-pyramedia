@@ -6,7 +6,7 @@
     <!-- Homepage (English) -->
     <url>
         <loc>https://ccode.pyramedia.info/</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-10-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <xhtml:link rel="alternate" hreflang="ar" href="https://ccode.pyramedia.info/index-ar.html"/>
@@ -15,7 +15,7 @@
     <!-- Homepage (Arabic) -->
     <url>
         <loc>https://ccode.pyramedia.info/index-ar.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-10-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <xhtml:link rel="alternate" hreflang="en" href="https://ccode.pyramedia.info/"/>
@@ -24,17 +24,35 @@
     <!-- Blog (English) -->
     <url>
         <loc>https://ccode.pyramedia.info/blog.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-10-31</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
 
-    <!-- Testimonials -->
+    <!-- Testimonials (English) -->
     <url>
         <loc>https://ccode.pyramedia.info/testimonials.html</loc>
-        <lastmod>2025-01-15</lastmod>
+        <lastmod>2025-10-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://ccode.pyramedia.info/testimonials-ar.html"/>
+    </url>
+
+    <!-- Testimonials (Arabic) -->
+    <url>
+        <loc>https://ccode.pyramedia.info/testimonials-ar.html</loc>
+        <lastmod>2025-10-31</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ccode.pyramedia.info/testimonials.html"/>
+    </url>
+
+    <!-- Admin Panel -->
+    <url>
+        <loc>https://ccode.pyramedia.info/admin/</loc>
+        <lastmod>2025-10-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
     </url>
 
 </urlset>

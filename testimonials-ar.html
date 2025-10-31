@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آراء العملاء | بيراميديا - موثوق من قبل العلامات التجارية الرائدة</title>
+    <meta name="description" content="اقرأ ما يقوله عملاؤنا عن بيراميديا. اكتشف قصص النجاح وآراء العملاء الراضين في جميع أنحاء منطقة الخليج.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Star Rating */
+        .star-rating {
+            display: inline-flex;
+            gap: 4px;
+        }
+
+        .star-rating i {
+            color: #FCD34D;
+            font-size: 1.25rem;
+        }
+
+        /* Testimonial Card Animation */
+        .testimonial-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(255, 107, 53, 0.25);
+        }
+
+        /* Quote Icon */
+        .quote-icon {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Form Styles */
+        .form-input {
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.15);
+        }
+
+        /* Loading State */
+        .skeleton {
+            animation: skeleton-loading 1s linear infinite alternate;
+        }
+
+        @keyframes skeleton-loading {
+            0% { background-color: hsl(200, 20%, 80%); }
+            100% { background-color: hsl(200, 20%, 95%); }
+        }
+
+        /* Success Animation */
+        @keyframes successPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .success-animation {
+            animation: successPulse 0.6s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-reverse space-x-8">
+                    <a href="index-ar.html" class="text-2xl font-bold gradient-text">بيراميديا</a>
+                    <div class="hidden md:flex space-x-reverse space-x-6">
+                        <a href="index-ar.html" class="text-gray-700 hover:text-orange-500 transition-colors">الرئيسية</a>
+                        <a href="index-ar.html#services" class="text-gray-700 hover:text-orange-500 transition-colors">الخدمات</a>
+                        <a href="blog.html" class="text-gray-700 hover:text-orange-500 transition-colors">المدونة</a>
+                        <a href="testimonials-ar.html" class="text-orange-500 font-semibold">آراء العملاء</a>
+                        <a href="index-ar.html#contact" class="text-gray-700 hover:text-orange-500 transition-colors">تواصل معنا</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-reverse space-x-4">
+                    <a href="testimonials.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">
+                        <span class="text-sm font-semibold text-gray-800">English</span>
+                    </a>
+                    <a href="#submit-form" class="gradient-bg text-white px-6 py-2 rounded-lg font-semibold hover:shadow-xl transition-all">
+                        شارك تجربتك
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 gradient-bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6" data-aos="fade-up">
+                ماذا يقول عملاؤنا
+            </h1>
+            <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                موثوق من قبل أكثر من 500 شركة في جميع أنحاء منطقة الخليج
+            </p>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2" id="totalTestimonials">500+</div>
+                    <div class="text-white/80">عميل سعيد</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2" id="avgRating">4.9</div>
+                    <div class="text-white/80">متوسط التقييم</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2">250%</div>
+                    <div class="text-white/80">زيادة متوسط العائد</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2">98%</div>
+                    <div class="text-white/80">معدل الرضا</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Grid -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div id="testimonialsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Loading skeletons -->
+                <div class="skeleton h-80 rounded-2xl"></div>
+                <div class="skeleton h-80 rounded-2xl"></div>
+                <div class="skeleton h-80 rounded-2xl"></div>
+                <div class="skeleton h-80 rounded-2xl"></div>
+                <div class="skeleton h-80 rounded-2xl"></div>
+                <div class="skeleton h-80 rounded-2xl"></div>
+            </div>
+
+            <!-- Pagination -->
+            <div id="paginationContainer" class="mt-12"></div>
+        </div>
+    </section>
+
+    <!-- Submit Testimonial Form -->
+    <section id="submit-form" class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">شارك تجربتك</h2>
+                <p class="text-xl text-gray-600">ساعد الآخرين على اكتشاف قوة العمل مع بيراميديا</p>
+            </div>
+
+            <form id="testimonialForm" class="bg-gray-50 rounded-2xl p-8 md:p-12 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Name -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            الاسم <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            name="client_name"
+                            required
+                            class="form-input w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none"
+                            placeholder="أحمد محمد"
+                        >
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            البريد الإلكتروني <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="email"
+                            name="client_email"
+                            required
+                            class="form-input w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none"
+                            placeholder="ahmed@company.com"
+                        >
+                    </div>
+
+                    <!-- Position -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            المنصب
+                        </label>
+                        <input
+                            type="text"
+                            name="client_position"
+                            class="form-input w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none"
+                            placeholder="المدير التنفيذي، مدير التسويق، إلخ"
+                        >
+                    </div>
+
+                    <!-- Company -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            اسم الشركة
+                        </label>
+                        <input
+                            type="text"
+                            name="client_company"
+                            class="form-input w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none"
+                            placeholder="شركتك"
+                        >
+                    </div>
+                </div>
+
+                <!-- Project Type -->
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        نوع الخدمة/المشروع
+                    </label>
+                    <select
+                        name="project_type"
+                        class="form-input w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none"
+                    >
+                        <option value="">اختر خدمة</option>
+                        <option value="Brand Strategy">استراتيجية العلامة التجارية</option>
+                        <option value="Digital Marketing">التسويق الرقمي</option>
+                        <option value="Social Media Marketing">التسويق عبر وسائل التواصل</option>
+                        <option value="Content Creation">إنشاء المحتوى</option>
+                        <option value="Video Production">إنتاج الفيديو</option>
+                        <option value="SEO & SEM">تحسين محركات البحث</option>
+                        <option value="Marketing Automation">أتمتة التسويق</option>
+                        <option value="E-commerce Solutions">حلول التجارة الإلكترونية</option>
+                        <option value="Other">أخرى</option>
+                    </select>
+                </div>
+
+                <!-- Rating -->
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        تقييمك <span class="text-red-500">*</span>
+                    </label>
+                    <div class="flex items-center space-x-reverse space-x-2">
+                        <div id="ratingStars" class="flex space-x-reverse space-x-1">
+                            <i class="fas fa-star text-3xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors" data-rating="1"></i>
+                            <i class="fas fa-star text-3xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors" data-rating="2"></i>
+                            <i class="fas fa-star text-3xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors" data-rating="3"></i>
+                            <i class="fas fa-star text-3xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors" data-rating="4"></i>
+                            <i class="fas fa-star text-3xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors" data-rating="5"></i>
+                        </div>
+                        <span id="ratingText" class="text-sm text-gray-600 mr-3"></span>
+                    </div>
+                    <input type="hidden" name="rating" id="ratingValue" value="5" required>
+                </div>
+
+                <!-- Testimonial -->
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        رأيك <span class="text-red-500">*</span>
+                    </label>
+                    <textarea
+                        name="testimonial_text"
+                        required
+                        rows="6"
+                        class="form-input w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none resize-none"
+                        placeholder="أخبرنا عن تجربتك في العمل مع بيراميديا..."
+                    ></textarea>
+                    <p class="text-sm text-gray-500 mt-2">الحد الأدنى 50 حرفاً</p>
+                </div>
+
+                <!-- Submit Button -->
+                <button
+                    type="submit"
+                    class="w-full gradient-bg text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all"
+                >
+                    <i class="fas fa-paper-plane ml-2"></i>
+                    إرسال الرأي
+                </button>
+
+                <p class="text-sm text-gray-500 mt-4 text-center">
+                    سيتم مراجعة رأيك قبل نشره
+                </p>
+            </form>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="hidden mt-8 p-6 bg-green-50 border-2 border-green-500 rounded-2xl text-center success-animation">
+                <i class="fas fa-check-circle text-6xl text-green-500 mb-4"></i>
+                <h3 class="text-2xl font-bold text-green-800 mb-2">شكراً لك!</h3>
+                <p class="text-green-700">تم إرسال رأيك بنجاح. سنقوم بمراجعته ونشره قريباً!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6" data-aos="fade-up">
+                هل أنت مستعد للانضمام إلى قصص نجاحنا؟
+            </h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                دعنا نحول علامتك التجارية ونحقق نتائج استثنائية معاً
+            </p>
+            <a href="index-ar.html#contact" class="inline-block bg-white text-orange-500 px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-rocket ml-2"></i>
+                ابدأ مشروعك
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 بيراميديا. جميع الحقوق محفوظة.</p>
+            <div class="mt-4 flex justify-center space-x-reverse space-x-6">
+                <a href="#" class="hover:text-orange-500 transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
+                <a href="#" class="hover:text-orange-500 transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="#" class="hover:text-orange-500 transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                <a href="#" class="hover:text-orange-500 transition-colors"><i class="fab fa-twitter text-2xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+
+    <!-- Testimonials JavaScript -->
+    <script src="js/testimonials.js"></script>
+
+</body>
+</html>
