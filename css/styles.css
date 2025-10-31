@@ -1,0 +1,735 @@
+/**
+ * PYRAMEDIA - Main Stylesheet
+ * Organized and modular CSS for better maintainability
+ * @version 2.0
+ */
+
+/* ============================================
+   1. BASE STYLES & RESETS
+   ============================================ */
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Focus Management - Accessibility First */
+*:focus-visible {
+    outline: 3px solid #FF6B35;
+    outline-offset: 3px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.3);
+}
+
+/* Skip to main content link for accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #FF6B35;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 100;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ============================================
+   2. THEME SYSTEM - GRADIENTS & COLORS
+   ============================================ */
+
+.gradient-bg {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ============================================
+   3. ANIMATIONS
+   ============================================ */
+
+/* Float Animation */
+.float-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Fade In Up Animation */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fade In Up Keyframe Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scale In Animation */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+}
+
+/* Modal Slide In */
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Reduce Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .float-animation {
+        animation: none;
+    }
+}
+
+/* ============================================
+   4. NAVIGATION
+   ============================================ */
+
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #FF6B35;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+    width: 100%;
+}
+
+/* Navbar Blur Effect */
+.navbar-blur {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+body.dark-mode .navbar-blur {
+    background-color: rgba(26, 26, 26, 0.9);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.mobile-menu.active {
+    max-height: 500px;
+}
+
+/* ============================================
+   5. CARDS & INTERACTIVE ELEMENTS
+   ============================================ */
+
+.service-card,
+.portfolio-card,
+.blog-card {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover,
+.portfolio-card:hover,
+.blog-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+}
+
+/* Buttons */
+.btn-primary {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Button Loading State */
+.btn-loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn-spinner {
+    display: inline-block;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   6. DARK MODE
+   ============================================ */
+
+body.dark-mode {
+    background-color: #0f0f0f;
+    color: #ffffff;
+}
+
+body.dark-mode .bg-white {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .bg-gray-50 {
+    background-color: #0f0f0f;
+}
+
+body.dark-mode .text-gray-600 {
+    color: #cccccc;
+}
+
+body.dark-mode .text-gray-800 {
+    color: #ffffff;
+}
+
+body.dark-mode .text-black {
+    color: #ffffff;
+}
+
+body.dark-mode footer {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .border-gray-200 {
+    border-color: #333333;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+/* ============================================
+   7. SCROLL PROGRESS BAR
+   ============================================ */
+
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #FF6B35 0%, #FF8C42 100%);
+    z-index: 10000;
+    transition: width 0.1s ease;
+}
+
+/* ============================================
+   8. PORTFOLIO / FILTER SYSTEM
+   ============================================ */
+
+.filter-btn {
+    background: white;
+    color: #6B7280;
+    border: 2px solid #E5E7EB;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: #FF6B35;
+    color: #FF6B35;
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+    color: white;
+    border-color: #FF6B35;
+    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+}
+
+body.dark-mode .filter-btn {
+    background: #1a1a1a;
+    color: #cccccc;
+    border-color: #333333;
+}
+
+/* Portfolio Grid Items */
+.portfolio-item {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.portfolio-item:nth-child(1) { animation-delay: 0.1s; }
+.portfolio-item:nth-child(2) { animation-delay: 0.2s; }
+.portfolio-item:nth-child(3) { animation-delay: 0.3s; }
+.portfolio-item:nth-child(4) { animation-delay: 0.4s; }
+.portfolio-item:nth-child(5) { animation-delay: 0.5s; }
+.portfolio-item:nth-child(6) { animation-delay: 0.6s; }
+.portfolio-item:nth-child(7) { animation-delay: 0.7s; }
+.portfolio-item:nth-child(8) { animation-delay: 0.8s; }
+.portfolio-item:nth-child(9) { animation-delay: 0.9s; }
+
+#portfolioGrid {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* ============================================
+   9. CALENDAR & BOOKING SYSTEM
+   ============================================ */
+
+.calendar-day {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.calendar-day:hover:not(.disabled) {
+    background-color: #FF6B35;
+    color: white;
+    transform: scale(1.1);
+}
+
+.calendar-day.selected {
+    background-color: #FF6B35;
+    color: white;
+}
+
+.calendar-day.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.time-slot {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.time-slot:hover:not(.disabled) {
+    background-color: #FF8C42;
+    color: white;
+}
+
+.time-slot.selected {
+    background-color: #FF6B35;
+    color: white;
+}
+
+.time-slot.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   10. MODAL SYSTEM
+   ============================================ */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   11. UTILITY CLASSES
+   ============================================ */
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Hidden but accessible (for screen readers) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ============================================
+   12. FORM VALIDATION STATES
+   ============================================ */
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #E5E7EB;
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #FF6B35;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.form-control.is-valid {
+    border-color: #10B981;
+}
+
+.form-control.is-invalid {
+    border-color: #EF4444;
+}
+
+.error-message {
+    display: none;
+    color: #EF4444;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.error-message.active {
+    display: block;
+}
+
+.success-message {
+    display: none;
+    color: #10B981;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.success-message.active {
+    display: block;
+}
+
+/* Form Loading State */
+.form-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.form-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================
+   13. LOADING STATES & SKELETONS
+   ============================================ */
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #f0f0f0 0%,
+        #e0e0e0 50%,
+        #f0f0f0 100%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+body.dark-mode .skeleton {
+    background: linear-gradient(
+        90deg,
+        #2a2a2a 0%,
+        #3a3a3a 50%,
+        #2a2a2a 100%
+    );
+    background-size: 200% 100%;
+}
+
+.skeleton-card {
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.skeleton-image {
+    width: 100%;
+    height: 200px;
+    background: #e0e0e0;
+}
+
+.skeleton-text {
+    height: 1rem;
+    margin: 0.5rem 0;
+    background: #e0e0e0;
+}
+
+/* ============================================
+   14. EMPTY STATES
+   ============================================ */
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.empty-state-icon {
+    font-size: 4rem;
+    color: #D1D5DB;
+    margin-bottom: 1rem;
+}
+
+.empty-state-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state-description {
+    color: #6B7280;
+    margin-bottom: 1.5rem;
+}
+
+body.dark-mode .empty-state-title {
+    color: #ffffff;
+}
+
+body.dark-mode .empty-state-description {
+    color: #cccccc;
+}
+
+/* ============================================
+   15. NOSCRIPT WARNING
+   ============================================ */
+
+.noscript-warning {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #FEF3C7;
+    border-bottom: 2px solid #F59E0B;
+    padding: 1rem;
+    text-align: center;
+    z-index: 99999;
+}
+
+.noscript-warning p {
+    margin: 0.25rem 0;
+    color: #92400E;
+}
+
+/* ============================================
+   16. PRINT STYLES
+   ============================================ */
+
+@media print {
+    .navbar,
+    .scroll-progress,
+    .modal,
+    footer,
+    button,
+    .btn-primary {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+}
+
+/* ============================================
+   17. RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .modal-content {
+        max-height: 95vh;
+        margin: 1rem;
+    }
+
+    .service-card:hover,
+    .portfolio-card:hover,
+    .blog-card:hover {
+        transform: translateY(-5px) scale(1.01);
+    }
+}
+
+/* ============================================
+   18. HIGH CONTRAST MODE
+   ============================================ */
+
+@media (prefers-contrast: high) {
+    .btn-primary,
+    .gradient-bg {
+        background: #FF6B35;
+    }
+
+    .nav-link::after {
+        height: 3px;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+        outline: 4px solid #FF6B35;
+        outline-offset: 4px;
+    }
+}
+
+/* ============================================
+   19. CUSTOM SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FF6B35;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+}
