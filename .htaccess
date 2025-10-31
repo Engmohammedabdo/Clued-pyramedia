@@ -14,6 +14,15 @@
     # Force WWW (uncomment if needed)
     # RewriteCond %{HTTP_HOST} !^www\. [NC]
     # RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+    # Block access to logs directory
+    RewriteRule ^logs/ - [F,L]
+
+    # Block access to data directory
+    RewriteRule ^data/ - [F,L]
+
+    # Block PHP execution in uploads directories
+    RewriteRule ^(images|uploads|files)/.*\.php$ - [F,L]
 </IfModule>
 
 # ========================================
@@ -130,17 +139,8 @@ Options -Indexes
     </If>
 </FilesMatch>
 
-# Protect logs directory
-<DirectoryMatch "logs">
-    Order allow,deny
-    Deny from all
-</DirectoryMatch>
-
-# Protect data directory from direct access
-<DirectoryMatch "data">
-    Order allow,deny
-    Deny from all
-</DirectoryMatch>
+# Protect logs and data directories
+# (Rules consolidated at top of file)
 
 # ========================================
 # Error Pages (create these if needed)
@@ -193,12 +193,7 @@ Options -Indexes
 # ========================================
 
 # Prevent execution of PHP files in upload directories
-<DirectoryMatch "^.*(images|uploads|files).*$">
-    <FilesMatch "\.php$">
-        Order allow,deny
-        Deny from all
-    </FilesMatch>
-</DirectoryMatch>
+# (Rules consolidated at top of file)
 
 # ========================================
 # Rate Limiting (requires mod_evasive or mod_qos)
