@@ -119,6 +119,18 @@ GET /php/blog-api.php?action=list&lang=en&page=1&per_page=12
 - ✅ Social media sharing
 - ✅ n8n webhook integration
 
+### Admin Dashboard
+- ✅ Secure authentication system
+- ✅ Role-based access (admin/author)
+- ✅ Login attempt limiting
+- ✅ Dashboard with statistics
+- ✅ Recent posts overview
+- ✅ Responsive sidebar navigation
+- ⏳ Posts management (CRUD)
+- ⏳ Categories & tags management
+- ⏳ Media library
+- ⏳ TinyMCE editor
+
 ### Forms
 - ✅ Contact form
 - ✅ Booking system with calendar
@@ -184,9 +196,11 @@ Secondary: #FF8C42
 - Phase 1: Bilingual website + Language switcher
 - Phase 2: Blog API (PHP 8+) + Database
 - Phase 3: Blog HTML pages (EN/AR) + n8n Integration
+- Phase 4: Admin Dashboard Core (Login + Dashboard + Auth)
 
 ### In Progress ⏳
-- Admin dashboard
+- Admin posts management
+- Admin categories & tags
 - Rich text editor
 
 ### Coming Soon 🔜
