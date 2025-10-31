@@ -22,7 +22,7 @@ define('UPLOAD_PATH', __DIR__ . '/../../uploads/blog/');
 define('UPLOAD_URL', '/uploads/blog/');
 
 // TinyMCE API Key (Get free key from: https://www.tiny.cloud/)
-define('TINYMCE_API_KEY', 'your-tinymce-api-key-here');
+define('TINYMCE_API_KEY', 'n9rgzrm86u06e51cwwdhps1qq4vs2i2v2hnz68r18r35syl2');
 
 // Timezone
 date_default_timezone_set('Asia/Dubai');
