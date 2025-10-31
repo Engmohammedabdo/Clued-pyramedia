@@ -26,23 +26,26 @@ PYRAMEDIA is a comprehensive, modern marketing and media agency website built wi
 
 ```
 Clued-pyramedia/
-├── index.html & index-ar.html    # Homepage (EN/AR)
-├── setup.php                     # DB setup (delete after use!)
-├── admin/                        # Admin panel (coming)
+├── index.html & index-ar.html      # Homepage (EN/AR)
+├── blog.html & blog-ar.html        # Blog listing pages ⭐ NEW
+├── blog-post.html & blog-post-ar   # Single post pages ⭐ NEW
+├── setup.php                       # DB setup (delete after use!)
+├── N8N_WEBHOOK_INTEGRATION.md      # n8n integration guide ⭐ NEW
+├── admin/                          # Admin panel (coming)
 ├── config/
-│   └── database.php              # DB connection
+│   └── database.php                # DB connection
 ├── php/
-│   ├── contact.php               # Contact form
-│   ├── booking.php               # Booking system
-│   ├── newsletter.php            # Newsletter
-│   └── blog-api.php              # Blog REST API ⭐
+│   ├── contact.php                 # Contact form
+│   ├── booking.php                 # Booking system
+│   ├── newsletter.php              # Newsletter
+│   └── blog-api.php                # Blog REST API ⭐
 ├── js/
-│   ├── main.js                   # Main JS
-│   ├── language.js               # i18n system
-│   └── blog.js                   # Blog manager
+│   ├── main.js                     # Main JS
+│   ├── language.js                 # i18n system
+│   └── blog.js                     # Blog manager ⭐
 ├── sql/
-│   └── blog_schema.sql           # Database schema
-└── uploads/blog/                 # Blog images
+│   └── blog_schema.sql             # Database schema
+└── uploads/blog/                   # Blog images
 ```
 
 ---
@@ -110,6 +113,11 @@ GET /php/blog-api.php?action=list&lang=en&page=1&per_page=12
 - ✅ Categories & Tags
 - ✅ View counter
 - ✅ Related posts
+- ✅ Blog listing pages (EN/AR)
+- ✅ Single post pages (EN/AR)
+- ✅ Popular posts sidebar
+- ✅ Social media sharing
+- ✅ n8n webhook integration
 
 ### Forms
 - ✅ Contact form
@@ -175,9 +183,9 @@ Secondary: #FF8C42
 ### Completed ✅
 - Phase 1: Bilingual website + Language switcher
 - Phase 2: Blog API (PHP 8+) + Database
+- Phase 3: Blog HTML pages (EN/AR) + n8n Integration
 
 ### In Progress ⏳
-- Blog HTML pages
 - Admin dashboard
 - Rich text editor
 
