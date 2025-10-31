@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Testimonials | PYRAMEDIA - Trusted by Leading Brands</title>
+    <meta name="description" content="Read what our clients say about PYRAMEDIA. Discover success stories and testimonials from satisfied customers across the GCC region.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Star Rating */
+        .star-rating {
+            display: inline-flex;
+            gap: 4px;
+        }
+
+        .star-rating i {
+            color: #FCD34D;
+            font-size: 1.25rem;
+        }
+
+        /* Testimonial Card Animation */
+        .testimonial-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(255, 107, 53, 0.25);
+        }
+
+        /* Quote Icon */
+        .quote-icon {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Form Styles */
+        .form-input {
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.15);
+        }
+
+        /* Loading State */
+        .skeleton {
+            animation: skeleton-loading 1s linear infinite alternate;
+        }
+
+        @keyframes skeleton-loading {
+            0% { background-color: hsl(200, 20%, 80%); }
+            100% { background-color: hsl(200, 20%, 95%); }
+        }
+
+        /* Success Animation */
+        @keyframes successPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .success-animation {
+            animation: successPulse 0.6s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-8">
+                    <a href="index.html" class="text-2xl font-bold gradient-text">PYRAMEDIA</a>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="index.html" class="text-gray-700 hover:text-orange-500 transition-colors">Home</a>
+                        <a href="index.html#services" class="text-gray-700 hover:text-orange-500 transition-colors">Services</a>
+                        <a href="blog.html" class="text-gray-700 hover:text-orange-500 transition-colors">Blog</a>
+                        <a href="testimonials.html" class="text-orange-500 font-semibold">Testimonials</a>
+                        <a href="index.html#contact" class="text-gray-700 hover:text-orange-500 transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="testimonials-ar.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">
+                        <span class="text-sm font-semibold text-gray-800">العربية</span>
+                    </a>
+                    <a href="#submit-form" class="gradient-bg text-white px-6 py-2 rounded-lg font-semibold hover:shadow-xl transition-all">
+                        Share Your Story
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 gradient-bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6" data-aos="fade-up">
+                What Our Clients Say
+            </h1>
+            <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Trusted by 500+ businesses across the GCC region
+            </p>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2" id="totalTestimonials">500+</div>
+                    <div class="text-white/80">Happy Clients</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2" id="avgRating">4.9</div>
+                    <div class="text-white/80">Average Rating</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2">250%</div>
+                    <div class="text-white/80">Avg. ROI Increase</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2">98%</div>
+                    <div class="text-white/80">Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Grid -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div id="testimonialsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Loading skeletons -->
+                <div class="skeleton h-80 rounded-2xl"></div>
+                <div class="skeleton h-80 rounded-2xl"></div>
+                <div class="skeleton h-80 rounded-2xl"></div>
+                <div class="skeleton h-80 rounded-2xl"></div>
+                <div class="skeleton h-80 rounded-2xl"></div>
+                <div class="skeleton h-80 rounded-2xl"></div>
+            </div>
+
+            <!-- Pagination -->
+            <div id="paginationContainer" class="mt-12"></div>
+        </div>
+    </section>
+
+    <!-- Submit Testimonial Form -->
+    <section id="submit-form" class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">Share Your Experience</h2>
+                <p class="text-xl text-gray-600">Help others discover the power of working with PYRAMEDIA</p>
+            </div>
+
+            <form id="testimonialForm" class="bg-gray-50 rounded-2xl p-8 md:p-12 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Name -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            Your Name <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            name="client_name"
+                            required
+                            class="form-input w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none"
+                            placeholder="John Doe"
+                        >
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            Email Address <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="email"
+                            name="client_email"
+                            required
+                            class="form-input w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none"
+                            placeholder="john@company.com"
+                        >
+                    </div>
+
+                    <!-- Position -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            Your Position
+                        </label>
+                        <input
+                            type="text"
+                            name="client_position"
+                            class="form-input w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none"
+                            placeholder="CEO, Marketing Director, etc."
+                        >
+                    </div>
+
+                    <!-- Company -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            Company Name
+                        </label>
+                        <input
+                            type="text"
+                            name="client_company"
+                            class="form-input w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none"
+                            placeholder="Your Company"
+                        >
+                    </div>
+                </div>
+
+                <!-- Project Type -->
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        Service/Project Type
+                    </label>
+                    <select
+                        name="project_type"
+                        class="form-input w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none"
+                    >
+                        <option value="">Select a service</option>
+                        <option value="Brand Strategy">Brand Strategy</option>
+                        <option value="Digital Marketing">Digital Marketing</option>
+                        <option value="Social Media Marketing">Social Media Marketing</option>
+                        <option value="Content Creation">Content Creation</option>
+                        <option value="Video Production">Video Production</option>
+                        <option value="SEO & SEM">SEO & SEM</option>
+                        <option value="Marketing Automation">Marketing Automation</option>
+                        <option value="E-commerce Solutions">E-commerce Solutions</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Rating -->
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        Your Rating <span class="text-red-500">*</span>
+                    </label>
+                    <div class="flex items-center space-x-2">
+                        <div id="ratingStars" class="flex space-x-1">
+                            <i class="fas fa-star text-3xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors" data-rating="1"></i>
+                            <i class="fas fa-star text-3xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors" data-rating="2"></i>
+                            <i class="fas fa-star text-3xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors" data-rating="3"></i>
+                            <i class="fas fa-star text-3xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors" data-rating="4"></i>
+                            <i class="fas fa-star text-3xl text-gray-300 cursor-pointer hover:text-yellow-400 transition-colors" data-rating="5"></i>
+                        </div>
+                        <span id="ratingText" class="text-sm text-gray-600 ml-3"></span>
+                    </div>
+                    <input type="hidden" name="rating" id="ratingValue" value="5" required>
+                </div>
+
+                <!-- Testimonial -->
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        Your Testimonial <span class="text-red-500">*</span>
+                    </label>
+                    <textarea
+                        name="testimonial_text"
+                        required
+                        rows="6"
+                        class="form-input w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none resize-none"
+                        placeholder="Tell us about your experience working with PYRAMEDIA..."
+                    ></textarea>
+                    <p class="text-sm text-gray-500 mt-2">Minimum 50 characters</p>
+                </div>
+
+                <!-- Submit Button -->
+                <button
+                    type="submit"
+                    class="w-full gradient-bg text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all"
+                >
+                    <i class="fas fa-paper-plane mr-2"></i>
+                    Submit Testimonial
+                </button>
+
+                <p class="text-sm text-gray-500 mt-4 text-center">
+                    Your testimonial will be reviewed before being published
+                </p>
+            </form>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="hidden mt-8 p-6 bg-green-50 border-2 border-green-500 rounded-2xl text-center success-animation">
+                <i class="fas fa-check-circle text-6xl text-green-500 mb-4"></i>
+                <h3 class="text-2xl font-bold text-green-800 mb-2">Thank You!</h3>
+                <p class="text-green-700">Your testimonial has been submitted successfully. We'll review it and publish it soon!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6" data-aos="fade-up">
+                Ready to Join Our Success Stories?
+            </h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Let's transform your brand and achieve extraordinary results together
+            </p>
+            <a href="index.html#contact" class="inline-block bg-white text-orange-500 px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-rocket mr-2"></i>
+                Start Your Project
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 PYRAMEDIA. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-6">
+                <a href="#" class="hover:text-orange-500 transition-colors"><i class="fab fa-facebook text-2xl"></i></a>
+                <a href="#" class="hover:text-orange-500 transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="#" class="hover:text-orange-500 transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                <a href="#" class="hover:text-orange-500 transition-colors"><i class="fab fa-twitter text-2xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+
+    <!-- Testimonials JavaScript -->
+    <script src="js/testimonials.js"></script>
+
+</body>
+</html>
