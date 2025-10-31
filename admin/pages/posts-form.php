@@ -275,11 +275,46 @@ $post = $post ?? [];
                         <label class="block text-sm font-semibold text-gray-700 mb-2">
                             Status
                         </label>
-                        <select name="status" class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
+                        <select name="status" id="postStatus" class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none">
                             <option value="draft" <?= ($post['status'] ?? 'draft') === 'draft' ? 'selected' : '' ?>>Draft</option>
-                            <option value="published" <?= ($post['status'] ?? '') === 'published' ? 'selected' : '' ?>>Published</option>
+                            <option value="published" <?= ($post['status'] ?? '') === 'published' ? 'selected' : '' ?>>Publish Now</option>
+                            <option value="scheduled" <?= ($post['status'] ?? '') === 'scheduled' ? 'selected' : '' ?>>Schedule for Later</option>
                             <option value="archived" <?= ($post['status'] ?? '') === 'archived' ? 'selected' : '' ?>>Archived</option>
                         </select>
+                    </div>
+
+                    <!-- Schedule Date/Time (shown when scheduled) -->
+                    <div id="scheduleSection" class="mb-4 <?= ($post['status'] ?? '') !== 'scheduled' ? 'hidden' : '' ?>">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            <i class="far fa-clock mr-1"></i>
+                            Publish Date & Time
+                        </label>
+                        <?php
+                        $scheduledFor = $post['scheduled_for'] ?? '';
+                        if ($scheduledFor) {
+                            $scheduledDate = date('Y-m-d\TH:i', strtotime($scheduledFor));
+                        } else {
+                            // Default to 1 hour from now
+                            $scheduledDate = date('Y-m-d\TH:i', strtotime('+1 hour'));
+                        }
+                        ?>
+                        <input
+                            type="datetime-local"
+                            name="scheduled_for"
+                            id="scheduledFor"
+                            value="<?= $scheduledDate ?>"
+                            min="<?= date('Y-m-d\TH:i') ?>"
+                            class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-orange-500 focus:outline-none text-sm"
+                        >
+                        <p class="text-xs text-gray-500 mt-1">Post will be automatically published at this time</p>
+                    </div>
+
+                    <!-- Auto-save Indicator -->
+                    <div class="mb-4 min-h-[20px]">
+                        <p id="autoSaveIndicator" class="text-xs text-gray-500 text-center">
+                            <i class="fas fa-circle-notch fa-spin mr-1"></i>
+                            Auto-save enabled
+                        </p>
                     </div>
 
                     <!-- Action Buttons -->
@@ -295,6 +330,12 @@ $post = $post ?? [];
 
                     <?php if ($isEdit): ?>
                     <hr class="my-4">
+                    <?php if ($post['status'] === 'scheduled' && $post['scheduled_for']): ?>
+                    <p class="text-xs text-gray-600 mb-2">
+                        <i class="far fa-clock mr-1"></i>
+                        Scheduled for: <?= date('M j, Y \a\t g:i A', strtotime($post['scheduled_for'])) ?>
+                    </p>
+                    <?php endif; ?>
                     <p class="text-xs text-gray-600">
                         Last updated: <?= timeAgo($post['updated_at']) ?>
                     </p>
@@ -565,19 +606,126 @@ document.getElementById('postForm').addEventListener('submit', function(e) {
     }
 });
 
-// Auto-save draft (optional feature)
+// Auto-save draft
 let autoSaveTimer;
+let lastAutoSave = 0;
+const AUTO_SAVE_INTERVAL = 30000; // 30 seconds
+
 function autoSaveDraft() {
     clearTimeout(autoSaveTimer);
     autoSaveTimer = setTimeout(() => {
-        // Implement auto-save logic here
-        console.log('Auto-saving draft...');
-    }, 30000); // Every 30 seconds
+        performAutoSave();
+    }, AUTO_SAVE_INTERVAL);
+}
+
+function performAutoSave() {
+    const now = Date.now();
+    if (now - lastAutoSave < AUTO_SAVE_INTERVAL) {
+        return; // Too soon, skip
+    }
+
+    const form = document.getElementById('postForm');
+    const postIdInput = form.querySelector('[name="post_id"]');
+    const postId = <?= $postId ?? 0 ?>;
+
+    // Collect form data
+    const formData = {
+        post_id: postId,
+        title_en: form.querySelector('[name="title_en"]')?.value || '',
+        title_ar: form.querySelector('[name="title_ar"]')?.value || '',
+        slug_en: form.querySelector('[name="slug_en"]')?.value || '',
+        slug_ar: form.querySelector('[name="slug_ar"]')?.value || '',
+        content_en: tinymce.get('content_en')?.getContent() || '',
+        content_ar: tinymce.get('content_ar')?.getContent() || '',
+        excerpt_en: form.querySelector('[name="excerpt_en"]')?.value || '',
+        excerpt_ar: form.querySelector('[name="excerpt_ar"]')?.value || '',
+        category_id: form.querySelector('[name="category_id"]')?.value || '',
+        featured_image: form.querySelector('[name="featured_image"]')?.value || '',
+        featured_image_alt: form.querySelector('[name="featured_image_alt"]')?.value || '',
+        meta_description_en: form.querySelector('[name="meta_description_en"]')?.value || '',
+        meta_description_ar: form.querySelector('[name="meta_description_ar"]')?.value || '',
+        meta_keywords: form.querySelector('[name="meta_keywords"]')?.value || ''
+    };
+
+    // Only auto-save if we have some content
+    if (!formData.title_en && !formData.content_en) {
+        return;
+    }
+
+    // Show saving indicator
+    const indicator = document.getElementById('autoSaveIndicator');
+    if (indicator) {
+        indicator.textContent = 'Saving...';
+        indicator.className = 'text-xs text-gray-500';
+    }
+
+    // Send to auto-save endpoint
+    fetch('autosave.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            lastAutoSave = now;
+            const time = new Date().toLocaleTimeString();
+
+            if (indicator) {
+                indicator.textContent = `Draft saved at ${time}`;
+                indicator.className = 'text-xs text-green-600';
+            }
+
+            // If this was a new post, update the URL to edit mode
+            if (data.action === 'created' && postId === 0) {
+                const newUrl = `posts.php?action=edit&id=${data.post_id}`;
+                window.history.replaceState({}, '', newUrl);
+                console.log('New draft created with ID:', data.post_id);
+            }
+        } else {
+            if (indicator) {
+                indicator.textContent = 'Auto-save failed';
+                indicator.className = 'text-xs text-red-600';
+            }
+        }
+    })
+    .catch(error => {
+        console.error('Auto-save error:', error);
+        if (indicator) {
+            indicator.textContent = 'Auto-save failed';
+            indicator.className = 'text-xs text-red-600';
+        }
+    });
 }
 
 // Trigger auto-save on content change
-tinymce.get('content_en')?.on('change', autoSaveDraft);
-tinymce.get('content_ar')?.on('change', autoSaveDraft);
+document.addEventListener('DOMContentLoaded', function() {
+    // Start auto-save timer on any form input change
+    const form = document.getElementById('postForm');
+    if (form) {
+        form.addEventListener('input', autoSaveDraft);
+    }
+
+    // Also trigger on TinyMCE content change
+    setTimeout(() => {
+        tinymce.get('content_en')?.on('change', autoSaveDraft);
+        tinymce.get('content_ar')?.on('change', autoSaveDraft);
+    }, 1000); // Wait for TinyMCE to initialize
+});
+
+// Toggle schedule section based on status
+const postStatus = document.getElementById('postStatus');
+const scheduleSection = document.getElementById('scheduleSection');
+
+postStatus?.addEventListener('change', function() {
+    if (this.value === 'scheduled') {
+        scheduleSection.classList.remove('hidden');
+    } else {
+        scheduleSection.classList.add('hidden');
+    }
+});
 </script>
 
 <style>

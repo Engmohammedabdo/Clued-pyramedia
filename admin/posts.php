@@ -141,9 +141,29 @@ function savePost(Database $db, array $user, int $postId): array {
             'updated_at' => date('Y-m-d H:i:s')
         ];
 
-        // Set published_at if publishing
-        if ($data['status'] === 'published' && $postId === 0) {
-            $data['published_at'] = date('Y-m-d H:i:s');
+        // Handle scheduling
+        if ($data['status'] === 'scheduled') {
+            $scheduledFor = trim($_POST['scheduled_for'] ?? '');
+            if (!empty($scheduledFor)) {
+                // Convert from datetime-local format to MySQL datetime
+                $data['scheduled_for'] = date('Y-m-d H:i:s', strtotime($scheduledFor));
+                $data['published_at'] = null; // Clear published_at for scheduled posts
+            } else {
+                return ['success' => false, 'error' => 'Please select a scheduled publish date'];
+            }
+        } else {
+            $data['scheduled_for'] = null; // Clear scheduled_for if not scheduling
+        }
+
+        // Set published_at if publishing now
+        if ($data['status'] === 'published') {
+            if ($postId === 0) {
+                // New post being published
+                $data['published_at'] = date('Y-m-d H:i:s');
+            } elseif (empty($data['published_at'])) {
+                // Existing draft/scheduled being published
+                $data['published_at'] = date('Y-m-d H:i:s');
+            }
         }
 
         if ($postId > 0) {

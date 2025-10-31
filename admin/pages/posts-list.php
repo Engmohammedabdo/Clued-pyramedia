@@ -137,6 +137,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <option value="">All Statuses</option>
                     <option value="published" <?= $status === 'published' ? 'selected' : '' ?>>Published</option>
                     <option value="draft" <?= $status === 'draft' ? 'selected' : '' ?>>Draft</option>
+                    <option value="scheduled" <?= $status === 'scheduled' ? 'selected' : '' ?>>Scheduled</option>
                     <option value="archived" <?= $status === 'archived' ? 'selected' : '' ?>>Archived</option>
                 </select>
             </div>
@@ -230,11 +231,13 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 $statusColors = [
                                     'published' => 'bg-green-100 text-green-700',
                                     'draft' => 'bg-yellow-100 text-yellow-700',
+                                    'scheduled' => 'bg-blue-100 text-blue-700',
                                     'archived' => 'bg-gray-100 text-gray-700'
                                 ];
                                 $color = $statusColors[$post['status']] ?? 'bg-gray-100 text-gray-700';
                                 ?>
                                 <span class="px-3 py-1 text-xs font-semibold <?= $color ?> rounded-full">
+                                    <?= $post['status'] === 'scheduled' ? '<i class="far fa-clock mr-1"></i>' : '' ?>
                                     <?= ucfirst($post['status']) ?>
                                 </span>
                             </td>
