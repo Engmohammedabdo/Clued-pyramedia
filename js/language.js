@@ -105,23 +105,12 @@ class LanguageManager {
 
     /**
      * Auto-redirect based on saved preference (optional)
+     * DISABLED: Causes issues with manual language switching
      */
     autoRedirect() {
-        const savedLang = localStorage.getItem('pyramedia_language');
-        const currentPage = window.location.pathname;
-
-        // Only auto-redirect on homepage
-        if (currentPage === '/' || currentPage === '/index.html' || currentPage.endsWith('/')) {
-            if (savedLang === 'ar' && !currentPage.includes('-ar')) {
-                // Redirect to Arabic version
-                window.location.href = 'index-ar.html';
-            }
-        } else if (currentPage.includes('index-ar.html')) {
-            if (savedLang === 'en') {
-                // Redirect to English version
-                window.location.href = 'index.html';
-            }
-        }
+        // Auto-redirect disabled to prevent conflicts with manual language switching
+        // Users can manually switch languages using the language switcher
+        return;
     }
 
     /**

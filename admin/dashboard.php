@@ -260,12 +260,18 @@ include __DIR__ . '/includes/header.php';
                                        title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href="../blog-post.html?slug=<?= $post['id'] ?>"
+                                    <?php if ($post['status'] === 'published'): ?>
+                                    <a href="/ccode/blog-post.html?slug=<?= $post['slug_en'] ?>"
                                        target="_blank"
                                        class="text-green-600 hover:text-green-800"
-                                       title="View">
+                                       title="View Live">
                                         <i class="fas fa-eye"></i>
                                     </a>
+                                    <?php else: ?>
+                                    <span class="text-gray-400" title="Not published">
+                                        <i class="fas fa-eye-slash"></i>
+                                    </span>
+                                    <?php endif; ?>
                                 </div>
                             </td>
                         </tr>

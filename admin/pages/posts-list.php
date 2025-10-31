@@ -255,12 +255,18 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                        title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href="../blog-post.html?slug=<?= $post['id'] ?>"
+                                    <?php if ($post['status'] === 'published'): ?>
+                                    <a href="/ccode/blog-post.html?slug=<?= $post['slug_en'] ?>"
                                        target="_blank"
                                        class="text-green-600 hover:text-green-800"
-                                       title="View">
+                                       title="View Live">
                                         <i class="fas fa-eye"></i>
                                     </a>
+                                    <?php else: ?>
+                                    <span class="text-gray-400" title="Not published">
+                                        <i class="fas fa-eye-slash"></i>
+                                    </span>
+                                    <?php endif; ?>
                                     <form method="POST" action="posts.php?action=delete&id=<?= $post['id'] ?>" class="inline" onsubmit="return confirm('Are you sure you want to delete this post?')">
                                         <input type="hidden" name="csrf_token" value="<?= $auth->generateCsrfToken() ?>">
                                         <button type="submit" class="text-red-600 hover:text-red-800" title="Delete">
