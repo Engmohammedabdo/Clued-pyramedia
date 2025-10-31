@@ -1,18 +1,44 @@
 <?php
 /**
- * PYRAMEDIA - Database Configuration Template
- * Copy this file to database.php and update with your credentials
+ * PYRAMEDIA - Database Configuration
+ *
+ * Now uses environment variables from .env file for security.
+ * Credentials are no longer hardcoded.
+ *
+ * @package PYRAMEDIA
+ * @since 1.0.0
  */
 
+// Load environment configuration
+if (file_exists(__DIR__ . '/bootstrap.php')) {
+    require_once __DIR__ . '/bootstrap.php';
+}
+
 class Database {
-    // Database credentials - UPDATE THESE!
-    private $host = 'localhost';
-    private $db_name = 'pyramed1_final';
-    private $username = 'pyramed1_final';  // CHANGE THIS
-    private $password = 'Engmidoz@2020';  // CHANGE THIS
+    // Database credentials loaded from environment variables
+    private $host;
+    private $db_name;
+    private $username;
+    private $password;
     private $charset = 'utf8mb4';
 
     public $conn;
+
+    /**
+     * Constructor - Load database credentials from environment
+     */
+    public function __construct() {
+        // Load credentials from environment variables
+        $this->host = env('DB_HOST', 'localhost');
+        $this->db_name = env('DB_NAME', '');
+        $this->username = env('DB_USER', '');
+        $this->password = env('DB_PASS', '');
+
+        // Validate that required credentials are present
+        if (empty($this->db_name) || empty($this->username)) {
+            throw new Exception('Database credentials not configured. Please check your .env file.');
+        }
+    }
 
     /**
      * Get database connection
@@ -30,7 +56,15 @@ class Database {
 
             $this->conn = new PDO($dsn, $this->username, $this->password, $options);
         } catch(PDOException $exception) {
-            echo "Connection error: " . $exception->getMessage();
+            // Log the actual error for developers
+            error_log("Database Connection Error: " . $exception->getMessage());
+
+            // Show generic error to users (don't expose details)
+            if (env('APP_DEBUG', false)) {
+                echo "Connection error: " . $exception->getMessage();
+            } else {
+                echo "Database connection failed. Please contact support.";
+            }
         }
 
         return $this->conn;
