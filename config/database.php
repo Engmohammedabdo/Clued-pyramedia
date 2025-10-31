@@ -7,9 +7,9 @@
 class Database {
     // Database credentials - UPDATE THESE!
     private $host = 'localhost';
-    private $db_name = 'pyramedia_db';
-    private $username = 'your_username';  // CHANGE THIS
-    private $password = 'your_password';  // CHANGE THIS
+    private $db_name = 'pyramed1_final';
+    private $username = 'pyramed1_final';  // CHANGE THIS
+    private $password = 'Engmidoz@2020';  // CHANGE THIS
     private $charset = 'utf8mb4';
 
     public $conn;
