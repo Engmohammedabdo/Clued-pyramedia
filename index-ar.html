@@ -832,41 +832,36 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 px-4 bg-gray-50">
+    <!-- Testimonials Section -->
+    <section class="py-20 px-4 bg-gradient-to-br from-orange-50 to-white">
         <div class="container mx-auto">
-            <div class="text-center mb-12" data-scroll>
-                <h2 class="text-5xl font-bold mb-4">معرض <span class="gradient-text">أعمالنا</span></h2>
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4">
+                    ماذا يقول <span class="gradient-text">عملاؤنا</span>
+                </h2>
                 <p class="text-gray-600 text-xl max-w-2xl mx-auto">
-                    اكتشف بعض مشاريعنا الناجحة وشاهد كيف ساعدنا الشركات على النمو
+                    موثوق به من قبل أكثر من 500 شركة في منطقة الخليج
                 </p>
             </div>
 
-            <!-- Portfolio Carousel -->
-            <div class="relative" data-scroll>
-                <div class="portfolio-carousel-container overflow-hidden">
-                    <div class="portfolio-carousel flex transition-transform duration-500 ease-out" id="portfolioCarousel">
-                        <!-- Portfolio items will be loaded here -->
-                    </div>
+            <!-- Testimonials Carousel -->
+            <div id="testimonialsCarousel" class="mb-12">
+                <!-- Carousel will be loaded via JavaScript -->
+                <div class="text-center py-12">
+                    <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500 mx-auto"></div>
                 </div>
-
-                <!-- Navigation Arrows -->
-                <button class="carousel-btn carousel-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all z-10" onclick="portfolioCarousel.prev()">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="carousel-btn carousel-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all z-10" onclick="portfolioCarousel.next()">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-
-                <!-- Dots -->
-                <div class="flex justify-center gap-2 mt-8" id="portfolioDots"></div>
             </div>
 
-            <!-- View All Button -->
-            <div class="text-center mt-12" data-scroll>
-                <a href="portfolio.html" class="inline-block gradient-bg text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all">
-                    <i class="fas fa-grip-horizontal ml-2"></i>
-                    عرض جميع المشاريع
+            <!-- CTA Button -->
+            <div class="text-center">
+                <a href="testimonials-ar.html" class="inline-block gradient-bg text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-2xl transition-all transform hover:scale-105">
+                    <i class="fas fa-comments ml-2"></i>
+                    اقرأ جميع الشهادات
+                </a>
+                <a href="testimonials-ar.html#submit-form" class="inline-block mr-4 bg-white text-orange-500 px-8 py-4 rounded-lg font-semibold text-lg border-2 border-orange-500 hover:bg-orange-50 transition-all transform hover:scale-105">
+                    <i class="fas fa-pen ml-2"></i>
+                    شارك قصتك
                 </a>
             </div>
         </div>
@@ -1217,7 +1212,6 @@
     <script src="js/micro-interactions.js"></script>
     <script src="js/theme-customizer.js"></script>
     <script src="js/animations.js"></script>
-    <script src="js/portfolio-carousel.js"></script>
     <script src="js/main.js"></script>
     <script src="js/testimonials.js"></script>
 
