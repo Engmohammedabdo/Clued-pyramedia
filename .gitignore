@@ -53,7 +53,7 @@ uploads/
 user_uploads/
 
 # Sensitive configuration
-config/database.php
+# config/database.php - Now uses .env, so can be committed
 config/secret.php
 
 # Generated files

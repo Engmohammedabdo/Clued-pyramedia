@@ -7,9 +7,9 @@
     RewriteEngine On
     RewriteBase /
 
-    # Force HTTPS (uncomment in production)
-    # RewriteCond %{HTTPS} off
-    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    # Force HTTPS - ENABLED FOR SECURITY
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
     # Force WWW (uncomment if needed)
     # RewriteCond %{HTTP_HOST} !^www\. [NC]
@@ -45,8 +45,10 @@
     # Permissions-Policy - Control browser features
     Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 
-    # Content-Security-Policy (adjust as needed)
-    # Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://images.unsplash.com data:;"
+    # Content-Security-Policy - ENABLED FOR SECURITY
+    # Note: 'unsafe-inline' is required for inline scripts/styles in current implementation
+    # TODO: Remove 'unsafe-inline' by externalizing all inline scripts/styles
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://cdn.tiny.cloud https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' https://images.unsplash.com https: data: blob:; connect-src 'self'; frame-src 'self' https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
 </IfModule>
 
 # ========================================
