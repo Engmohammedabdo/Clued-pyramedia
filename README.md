@@ -126,10 +126,15 @@ GET /php/blog-api.php?action=list&lang=en&page=1&per_page=12
 - ✅ Dashboard with statistics
 - ✅ Recent posts overview
 - ✅ Responsive sidebar navigation
-- ⏳ Posts management (CRUD)
-- ⏳ Categories & tags management
-- ⏳ Media library
-- ⏳ TinyMCE editor
+- ✅ **Posts management (Full CRUD)**
+- ✅ **TinyMCE rich text editor**
+- ✅ **Image upload & optimization**
+- ✅ **Categories & tags management**
+- ✅ **Bilingual editing (EN/AR)**
+- ✅ **SEO fields & meta tags**
+- ✅ **Bulk actions (publish/draft/delete)**
+- ⏳ Media library browser
+- ⏳ User management
 
 ### Forms
 - ✅ Contact form
@@ -197,11 +202,11 @@ Secondary: #FF8C42
 - Phase 2: Blog API (PHP 8+) + Database
 - Phase 3: Blog HTML pages (EN/AR) + n8n Integration
 - Phase 4: Admin Dashboard Core (Login + Dashboard + Auth)
+- Phase 5: **Admin Posts Management (CRUD + Editor + Upload)**
 
 ### In Progress ⏳
-- Admin posts management
-- Admin categories & tags
-- Rich text editor
+- Media library browser
+- User management panel
 
 ### Coming Soon 🔜
 - Comments system
